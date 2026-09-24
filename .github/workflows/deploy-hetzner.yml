@@ -25,7 +25,7 @@ jobs:
             cd /opt/pitaya
             if [ ! -d "elebensat/.git" ]; then
               echo "📦 Repositorio no encontrado. Clonando por primera vez..."
-              git clone https://github.com/chessco/elebensat.git
+              git clone https://github.com/chessco/elebensat.git || git clone git@github.com:chessco/elebensat.git
             fi
 
             cd /opt/pitaya/elebensat
