@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 140" width="160" height="140" fill="none">
+  <defs>
+    <linearGradient id="pitayaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#24A77F"/>
+      <stop offset="100%" stop-color="#17A0C6"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Crown Leaves (Green #24A77F) -->
+  <g id="crown">
+    <!-- Center Leaf -->
+    <path d="M80 6 C76 18 76 32 80 40 C84 32 84 18 80 6 Z" fill="#24A77F"/>
+    <!-- Left Leaf -->
+    <path d="M62 18 C65 26 71 34 77 38 C73 35 65 31 62 18 Z" fill="#24A77F"/>
+    <path d="M60 16 C55 24 57 34 66 41 C60 38 56 31 60 16 Z" fill="#24A77F"/>
+    <!-- Right Leaf -->
+    <path d="M98 18 C95 26 89 34 83 38 C87 35 95 31 98 18 Z" fill="#24A77F"/>
+    <path d="M100 16 C105 24 103 34 94 41 C100 38 104 31 100 16 Z" fill="#24A77F"/>
+  </g>
+
+  <!-- Outer Protective Arcs (Pink #DA3C7A) -->
+  <path d="M54 48 C44 58 42 74 46 88 C50 101 62 113 75 117" stroke="#DA3C7A" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M106 48 C116 58 118 74 114 88 C110 101 98 113 85 117" stroke="#DA3C7A" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+  <!-- Left Side: Tech/Circuit (Cyan/Blue #17A0C6) -->
+  <g id="left-tech">
+    <path d="M57 52 C67 52 76 52 77 52 L77 109 C66 108 56 97 53 85 C51 75 51 63 57 52 Z" fill="#17A0C6"/>
+    <!-- Circuit Lines -->
+    <path d="M53 76 L66 76 L77 87" stroke="#202020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Bits / Seeds (White) -->
+    <circle cx="64" cy="65" r="2.5" fill="#FFFFFF"/>
+    <circle cx="72" cy="65" r="2.5" fill="#FFFFFF"/>
+    <circle cx="67" cy="80" r="2.5" fill="#FFFFFF"/>
+    <circle cx="71" cy="94" r="2.5" fill="#FFFFFF"/>
+    <circle cx="61" cy="93" r="2" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Right Side: Tech/Circuit (Pink #DA3C7A) -->
+  <g id="right-tech">
+    <path d="M103 52 C93 52 83 52 83 52 L83 109 C94 108 104 97 107 85 C109 75 109 63 103 52 Z" fill="#DA3C7A"/>
+    <!-- Circuit Lines -->
+    <path d="M107 76 L94 76 L83 87" stroke="#202020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Bits / Seeds (White) -->
+    <circle cx="96" cy="65" r="2.5" fill="#FFFFFF"/>
+    <circle cx="88" cy="65" r="2.5" fill="#FFFFFF"/>
+    <circle cx="93" cy="80" r="2.5" fill="#FFFFFF"/>
+    <circle cx="89" cy="94" r="2.5" fill="#FFFFFF"/>
+    <circle cx="99" cy="93" r="2" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Central Gap/Line -->
+  <line x1="80" y1="44" x2="80" y2="114" stroke="#202020" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Brand Typography "pitayacode" -->
+  <text x="80" y="135" text-anchor="middle" font-family="'Inter', sans-serif" font-weight="700" font-size="16" fill="#FFFFFF" letter-spacing="1.2">pitayacode</text>
+</svg>

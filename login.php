@@ -250,9 +250,7 @@
 <div class="login-container">
     <div class="login-card">
         <div class="text-center">
-            <div class="brand-badge">
-                <i class="bi bi-cpu"></i>
-            </div>
+            <img src="assets/img/pitayacode-logo.svg" alt="PitayaCode" style="max-height: 75px; width: auto; margin-bottom: 0.75rem; filter: drop-shadow(0 4px 14px rgba(36, 167, 127, 0.25));">
             <h1 class="brand-title">
                 <span class="brand-gradient">PitayaCode</span>
             </h1>
