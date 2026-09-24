@@ -267,8 +267,11 @@ try {
             if (session_status() === PHP_SESSION_ACTIVE) session_write_close();
             $tTot0 = microtime(true);
             $iniTot = normalizar_fecha_filtro($req['inicio'] ?? '');
-            $finTot = normalizar_fecha_filtro($req['fin'] ?? '');
-            if ($iniTot === '' || $finTot === '') throw new Exception('Rango de fechas inválido para calcular totales.');
+            if ($iniTot === '' || $finTot === '') {
+                $hoy = new DateTimeImmutable('today', new DateTimeZone('America/Mexico_City'));
+                $iniTot = $iniTot !== '' ? $iniTot : $hoy->format('Y-m-01');
+                $finTot = $finTot !== '' ? $finTot : $hoy->format('Y-m-d');
+            }
             $finExcTot = fecha_fin_exclusiva($finTot);
             $paramsTot = [
                 ':emp_tot'=>$idEmpresa,
@@ -382,7 +385,9 @@ try {
         if ($lengthSimple > 200) $lengthSimple = 200;
 
         if ($inicioSimple === '' || $finSimple === '') {
-            throw new Exception('Rango de fechas inválido para el filtro rápido de receptor.');
+            $hoy = new DateTimeImmutable('today', new DateTimeZone('America/Mexico_City'));
+            $inicioSimple = $inicioSimple !== '' ? $inicioSimple : $hoy->format('Y-m-01');
+            $finSimple = $finSimple !== '' ? $finSimple : $hoy->format('Y-m-d');
         }
         if ($prefijoReceptor === '') {
             throw new Exception($campoReceptorSimple === 'rfc' ? 'Capture el RFC del receptor.' : 'Capture el inicio del nombre del receptor.');
@@ -526,7 +531,9 @@ try {
         if ($lengthSimple > 200) $lengthSimple = 200;
 
         if ($inicioSimple === '' || $finSimple === '') {
-            throw new Exception('Rango de fechas inválido para el filtro rápido de emisor.');
+            $hoy = new DateTimeImmutable('today', new DateTimeZone('America/Mexico_City'));
+            $inicioSimple = $inicioSimple !== '' ? $inicioSimple : $hoy->format('Y-m-01');
+            $finSimple = $finSimple !== '' ? $finSimple : $hoy->format('Y-m-d');
         }
         if ($prefijoEmisor === '') {
             throw new Exception($campoEmisorSimple === 'rfc' ? 'Capture el RFC del emisor.' : 'Capture el inicio del nombre del emisor.');
@@ -677,7 +684,9 @@ try {
         if ($lengthSimple > 200) $lengthSimple = 200;
 
         if ($inicioSimple === '' || $finSimple === '') {
-            throw new Exception('Rango de fechas inválido para la prueba simple.');
+            $hoy = new DateTimeImmutable('today', new DateTimeZone('America/Mexico_City'));
+            $inicioSimple = $inicioSimple !== '' ? $inicioSimple : $hoy->format('Y-m-01');
+            $finSimple = $finSimple !== '' ? $finSimple : $hoy->format('Y-m-d');
         }
 
         $finExclusivoSimple = fecha_fin_exclusiva($finSimple);

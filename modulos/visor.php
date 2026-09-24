@@ -1740,12 +1740,19 @@ if (is_readable($nominaGkJs)) {
                     if (!fechaIsoValidaVisor($('#f_inicio').val()) || !fechaIsoValidaVisor($('#f_fin').val())) {
                         establecerRangoMesActualVisor();
                     }
+                    const hoyVisor = new Date();
+                    const yyyyVisor = hoyVisor.getFullYear();
+                    const mmVisor = String(hoyVisor.getMonth() + 1).padStart(2, '0');
+                    const ddVisor = String(hoyVisor.getDate()).padStart(2, '0');
+                    const iniDefVisor = `${yyyyVisor}-${mmVisor}-01`;
+                    const finDefVisor = `${yyyyVisor}-${mmVisor}-${ddVisor}`;
+
                     d._ts = Date.now();
                     d.modo_mes_simple = pruebaMesSoloEmpresaFecha ? 1 : 0;
                     d.modo_emisor_simple = pruebaEmisorSoloEmpresaFecha ? 1 : 0;
                     d.modo_receptor_simple = pruebaReceptorSoloEmpresaFecha ? 1 : 0;
-                    d.inicio = $('#f_inicio').val();
-                    d.fin = $('#f_fin').val();
+                    d.inicio = fechaIsoValidaVisor($('#f_inicio').val()) ? $('#f_inicio').val() : iniDefVisor;
+                    d.fin = fechaIsoValidaVisor($('#f_fin').val()) ? $('#f_fin').val() : finDefVisor;
                     d.tipo = normalizarClasificacionCfdi($('#filtro_tipo').val());
                     d.metodo = $('#filtro_metodo_pago').val();
                     d.ppd_sin_complemento = $('#btnPpdSinComplemento').attr('data-activo') === '1' ? 1 : 0;

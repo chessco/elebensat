@@ -236,6 +236,7 @@ if (session_status() === PHP_SESSION_ACTIVE) {
                 }
             }
         });
+        $.fn.dataTable.ext.errMode = 'none';
     }
 
     <?php if ($puedeVerSolicitudesSat): ?>
@@ -348,7 +349,9 @@ if (session_status() === PHP_SESSION_ACTIVE) {
             if (result.isConfirmed) {
                 $.post('ajax/eliminar_factura.php', {id: id}, function(res) {
                     if(res.status === 'ok') {
-                        table.ajax.reload(null, false);
+                        if (typeof table !== 'undefined' && $('#tablaFacturas').length > 0) {
+                            table.ajax.reload(null, false);
+                        }
                         Swal.fire('Eliminado', res.msg, 'success');
                     } else {
                         Swal.fire('Error', res.msg, 'error');
@@ -372,7 +375,9 @@ if (session_status() === PHP_SESSION_ACTIVE) {
             if (result.isConfirmed && result.value) {
                 $.post('ajax/actualizar_fecha_pago.php', {id: id, fecha: result.value}, function(res) {
                     if(res.status === 'ok') {
-                        table.ajax.reload(null, false);
+                        if (typeof table !== 'undefined' && $('#tablaFacturas').length > 0) {
+                            table.ajax.reload(null, false);
+                        }
                         Swal.fire('Actualizado', '', 'success');
                     }
                 }, 'json');
@@ -414,7 +419,7 @@ if (session_status() === PHP_SESSION_ACTIVE) {
                                 background: '#161b22',
                                 color: '#c9d1d9'
                             });
-                            if (typeof table !== 'undefined') {
+                            if (typeof table !== 'undefined' && $('#tablaFacturas').length > 0) {
                                 table.ajax.reload(null, false);
                             }
                         } else {
