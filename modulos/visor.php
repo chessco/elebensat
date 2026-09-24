@@ -4026,8 +4026,8 @@ if (is_readable($nominaGkJs)) {
                 }).join('') + '</Row>';
             });
 
-            const libro = `<?xml version="1.0"?>
-<?mso-application progid="Excel.Sheet"?>
+            const libro = `\x3c?xml version="1.0"?>
+\x3c?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -4750,7 +4750,7 @@ if (is_readable($nominaGkJs)) {
             const emisor=($('#customSearch').val()||'').trim();
             const filtro=($('#emdBuscar').val()||'').trim();
             const desde=$('#f_inicio').val()||''; const hasta=$('#f_fin').val()||'';
-            const xml=`<?xml version="1.0" encoding="UTF-8"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Styles><Style ss:ID="Default" ss:Name="Normal"><Font ss:FontName="Calibri" ss:Size="10"/></Style><Style ss:ID="Title"><Font ss:Bold="1" ss:Size="14"/><Alignment ss:Horizontal="Center"/></Style><Style ss:ID="Header"><Font ss:Bold="1"/><Interior ss:Color="#D9EAF7" ss:Pattern="Solid"/><Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/></Style><Style ss:ID="Money"><NumberFormat ss:Format="$#,##0.00"/></Style></Styles><Worksheet ss:Name="EMISOR DESCRIPCION"><Table><Row><Cell ss:MergeAcross="7" ss:StyleID="Title"><Data ss:Type="String">Nombre emisor + descripción de conceptos</Data></Cell></Row><Row><Cell ss:MergeAcross="7"><Data ss:Type="String">Emisor: ${emdXmlExcelEsc(emisor)} | Rango: ${emdXmlExcelEsc(desde)} a ${emdXmlExcelEsc(hasta)} | Filtro descripción: ${emdXmlExcelEsc(filtro||'Sin filtro')} | Registros: ${filas.length}</Data></Cell></Row>${rows}</Table><WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel"><FreezePanes/><FrozenNoSplit/><SplitHorizontal>3</SplitHorizontal><TopRowBottomPane>3</TopRowBottomPane></WorksheetOptions></Worksheet></Workbook>`;
+            const xml=`\x3c?xml version="1.0" encoding="UTF-8"?>\x3c?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Styles><Style ss:ID="Default" ss:Name="Normal"><Font ss:FontName="Calibri" ss:Size="10"/></Style><Style ss:ID="Title"><Font ss:Bold="1" ss:Size="14"/><Alignment ss:Horizontal="Center"/></Style><Style ss:ID="Header"><Font ss:Bold="1"/><Interior ss:Color="#D9EAF7" ss:Pattern="Solid"/><Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/></Style><Style ss:ID="Money"><NumberFormat ss:Format="$#,##0.00"/></Style></Styles><Worksheet ss:Name="EMISOR DESCRIPCION"><Table><Row><Cell ss:MergeAcross="7" ss:StyleID="Title"><Data ss:Type="String">Nombre emisor + descripción de conceptos</Data></Cell></Row><Row><Cell ss:MergeAcross="7"><Data ss:Type="String">Emisor: ${emdXmlExcelEsc(emisor)} | Rango: ${emdXmlExcelEsc(desde)} a ${emdXmlExcelEsc(hasta)} | Filtro descripción: ${emdXmlExcelEsc(filtro||'Sin filtro')} | Registros: ${filas.length}</Data></Cell></Row>${rows}</Table><WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel"><FreezePanes/><FrozenNoSplit/><SplitHorizontal>3</SplitHorizontal><TopRowBottomPane>3</TopRowBottomPane></WorksheetOptions></Worksheet></Workbook>`;
             const blob=new Blob(['\ufeff',xml],{type:'application/vnd.ms-excel;charset=utf-8;'});
             const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
             const seguro=(emisor||'EMISOR').replace(/[^A-Za-z0-9_-]+/g,'_').slice(0,40);

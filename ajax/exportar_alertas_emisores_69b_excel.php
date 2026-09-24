@@ -63,9 +63,9 @@ try {
     header('Content-Type: application/vnd.ms-excel; charset=UTF-8');
     header('Content-Disposition: attachment; filename="'.$archivo.'"');
     header('Cache-Control: no-store, no-cache, must-revalidate');
-    echo '<?xml version="1.0" encoding="UTF-8"?>';
+    echo '<?xml version="1.0" encoding="UTF-8"?>'."\n";
+    echo '<?mso-application progid="Excel.Sheet"?>'."\n";
 ?>
-<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
