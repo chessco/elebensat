@@ -21,20 +21,38 @@ jobs:
           port: ${{ secrets.HETZNER_PORT || 22 }}
           script_stop: true
           script: |
-            echo "🚀 [1/5] Actualizando repositorio en Hetzner..."
+            echo "🚀 [1/5] Verificando repositorio en /opt/pitaya/elebensat..."
+            cd /opt/pitaya
+            if [ ! -d "elebensat/.git" ]; then
+              echo "📦 Repositorio no encontrado. Clonando por primera vez..."
+              git clone https://github.com/chessco/elebensat.git
+            fi
+
             cd /opt/pitaya/elebensat
             git pull origin main
 
-            echo "🔨 [2/5] Compilando imágenes Docker actualizadas..."
+            # Preparar .env y database.php desde plantillas si no existen en el servidor
+            if [ ! -f ".env" ]; then
+              echo "⚙️ Creando .env inicial desde .env.example..."
+              cp .env.example .env
+            fi
+
+            if [ ! -f "docker/config_ohlala/database.php" ]; then
+              echo "⚙️ Creando database.php inicial desde plantilla..."
+              mkdir -p docker/config_ohlala
+              cp docker/config_ohlala/database.php.example docker/config_ohlala/database.php
+            fi
+
+            echo "🔨 [2/5] Compilando imágenes Docker de ELEBENSAT..."
             docker compose build elebensat_app elebensat_web
 
-            echo "🔄 [3/5] Levantando stack ELEBENSAT (elebensat_net)..."
+            echo "🔄 [3/5] Levantando stack independiente (elebensat_net)..."
             docker compose up -d
 
-            echo "🩺 [4/5] Verificando estado de contenedores y salud HTTP..."
+            echo "🩺 [4/5] Verificando estado y salud HTTP..."
             docker compose ps
             sleep 3
-            curl -I --fail http://127.0.0.1:8080/login.php || echo "⚠️ Advertencia en comprobación HTTP inicial"
+            curl -I --fail http://127.0.0.1:8080/login.php || echo "⚠️ Advertencia en verificación HTTP local"
 
             echo "🧹 [5/5] Limpiando imágenes huérfanas..."
             docker image prune -f
