@@ -8,6 +8,7 @@
 !.env.example
 docker/config_ohlala/database.php
 !docker/config_ohlala/database.php.example
+vendor/
 
 # Certificados Digitales y Llaves Privadas (SAT / CSD / e.firma)
 *.cer
