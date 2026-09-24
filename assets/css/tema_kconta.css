@@ -1,430 +1,620 @@
+/* ==============================================================================
+   PITAYACODE DESIGN SYSTEM v1.0
+   Rebranding Oficial de Visor XML Pro (ElebenSAT)
+   Paleta: Green (#24A77F), Blue (#17A0C6), Pink (#DA3C7A), Dark (#202020)
+   ============================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 :root {
-  --k-primary: #154b70;
-  --k-primary-2: #1f678f;
-  --k-accent: #1688b5;
-  --k-bg: #eef3f7;
-  --k-surface: #ffffff;
-  --k-surface-2: #f7fafc;
-  --k-header: #e5f0f6;
-  --k-border: #cddae3;
-  --k-text: #172b3a;
-  --k-muted: #607584;
-  --k-hover: #e8f4fb;
-  --k-selected: #d7ecf8;
-  --k-danger: #c0394b;
-  --k-success: #21875b;
-  --k-warning: #d69516;
+  /* Colores Corporativos PitayaCode */
+  --pitaya-green: #24A77F;
+  --pitaya-green-hover: #1e8f6c;
+  --pitaya-blue: #17A0C6;
+  --pitaya-blue-hover: #1387a7;
+  --pitaya-pink: #DA3C7A;
+  --pitaya-pink-hover: #bd2f66;
+  --pitaya-dark: #202020;
+  --pitaya-dark-2: #181818;
+  --pitaya-white: #FFFFFF;
+
+  /* Superficies y Capas (Dark Theme) */
+  --pitaya-bg: #202020;
+  --pitaya-surface: #282828;
+  --pitaya-surface-elevated: #303030;
+  --pitaya-surface-card: #282828;
+  --pitaya-surface-hover: #323232;
+  --pitaya-surface-active: #383838;
+
+  /* Texto y Bordes */
+  --pitaya-text: #FFFFFF;
+  --pitaya-text-muted: #B8B8B8;
+  --pitaya-text-subtle: #757575;
+  --pitaya-border: rgba(255, 255, 255, 0.08);
+  --pitaya-border-bright: rgba(255, 255, 255, 0.16);
+
+  /* Gradientes de Identidad */
+  --pitaya-grad-green-blue: linear-gradient(135deg, #24A77F 0%, #17A0C6 100%);
+  --pitaya-grad-blue-pink: linear-gradient(135deg, #17A0C6 0%, #DA3C7A 100%);
+  --pitaya-grad-green-pink: linear-gradient(135deg, #24A77F 0%, #DA3C7A 100%);
+
+  /* Mapeo de compatibilidad del sistema anterior */
+  --k-primary: var(--pitaya-green);
+  --k-primary-2: var(--pitaya-green-hover);
+  --k-accent: var(--pitaya-blue);
+  --k-bg: var(--pitaya-bg);
+  --k-surface: var(--pitaya-surface);
+  --k-surface-2: var(--pitaya-surface-elevated);
+  --k-header: #242424;
+  --k-border: var(--pitaya-border);
+  --k-text: var(--pitaya-text);
+  --k-muted: var(--pitaya-text-muted);
+  --k-hover: var(--pitaya-surface-hover);
+  --k-selected: rgba(36, 167, 127, 0.18);
+  --k-danger: #e0475b;
+  --k-success: var(--pitaya-green);
+  --k-warning: var(--pitaya-pink);
+
+  /* Bootstrap Dark Defaults */
+  --bs-body-bg: var(--pitaya-bg);
+  --bs-body-color: var(--pitaya-text);
+  --bs-border-color: var(--pitaya-border);
 }
 
-html, body { min-height: 100%; }
-body {
-  background: var(--k-bg) !important;
-  color: var(--k-text) !important;
-  font-family: "Segoe UI", Arial, sans-serif !important;
+/* ==============================================================================
+   RESETEO BASE Y TIPOGRAFÍA
+   ============================================================================== */
+html, body {
+  min-height: 100%;
+  background: var(--pitaya-bg) !important;
+  background-color: var(--pitaya-bg) !important;
+  color: var(--pitaya-text) !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  letter-spacing: -0.01em;
 }
 
-/* Cabecera y navegación */
+/* Elementos de código y números fiscales en monospace */
+code, pre, .font-mono, td.uuid-col, td.monto-col, .badge-uuid {
+  font-family: 'JetBrains Mono', 'SF Mono', Consolas, Menlo, monospace !important;
+}
+
+/* ==============================================================================
+   CABECERA Y NAVEGACIÓN SUPERIOR (NAVBAR)
+   ============================================================================== */
 .navbar-custom {
-  background: linear-gradient(90deg, #123f61, #19577e) !important;
-  border: 0 !important;
-  box-shadow: 0 2px 8px rgba(17, 55, 80, .18);
+  background: var(--pitaya-dark-2) !important;
+  border-bottom: 1px solid var(--pitaya-border) !important;
+  padding: 0.65rem 1.25rem !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
 }
-.navbar-custom .fw-bold, .navbar-custom .usuario-activo,
-.navbar-custom .text-azul { color: #fff !important; }
-.navbar-custom .usuario-activo { opacity: .9; }
+
+.brand-pitaya {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--pitaya-grad-green-blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-pitaya i, .brand-pitaya svg {
+  color: var(--pitaya-green);
+  -webkit-text-fill-color: initial;
+}
+
 .empresa-activa {
-  background: rgba(255,255,255,.13) !important;
-  border-color: rgba(255,255,255,.45) !important;
-  color: #fff !important;
-  box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: var(--pitaya-surface) !important;
+  border: 1px solid rgba(36, 167, 127, 0.4) !important;
+  color: var(--pitaya-white) !important;
+  border-radius: 8px !important;
+  padding: 6px 14px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 12px rgba(36, 167, 127, 0.12) !important;
+  transition: all 0.2s ease !important;
 }
-.empresa-activa .etiqueta { color: #cbeaff !important; }
+
+.empresa-activa:hover {
+  border-color: var(--pitaya-green) !important;
+  box-shadow: 0 0 16px rgba(36, 167, 127, 0.22) !important;
+}
+
+.empresa-activa .etiqueta {
+  color: var(--pitaya-green) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em;
+}
+
+.usuario-activo {
+  color: var(--pitaya-text-muted) !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+.usuario-activo:hover {
+  color: var(--pitaya-white) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Sub-navegación / Pestañas de módulos */
 .navbar-buttons {
-  background: #fff !important;
-  border-bottom: 1px solid var(--k-border) !important;
-  box-shadow: 0 2px 6px rgba(35, 69, 91, .08);
+  background: var(--pitaya-surface) !important;
+  border-bottom: 1px solid var(--pitaya-border) !important;
+  padding: 0.4rem 1rem !important;
 }
+
 .btn-nav {
   background: transparent !important;
   border: 0 !important;
   border-bottom: 3px solid transparent !important;
-  color: #294557 !important;
-  border-radius: 0 !important;
-  font-weight: 600;
+  color: var(--pitaya-text-muted) !important;
+  padding: 0.55rem 0.95rem !important;
+  border-radius: 6px 6px 0 0 !important;
+  font-size: 0.86rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
-.btn-nav:hover { background: #edf6fb !important; color: var(--k-primary-2) !important; }
-.btn-nav.active {
-  background: #eef8fc !important;
-  border-bottom-color: #1c91bd !important;
-  color: #0c6c96 !important;
-}
-.btn-nav.text-warning { color: #9a6800 !important; }
-.dropdown-menu, .dropdown-menu-dark {
-  background: #fff !important;
-  border: 1px solid var(--k-border) !important;
-  box-shadow: 0 8px 24px rgba(29, 60, 79, .18) !important;
-}
-.dropdown-menu .dropdown-item, .dropdown-menu-dark .dropdown-item { color: var(--k-text) !important; }
-.dropdown-menu .dropdown-item:hover { background: var(--k-hover) !important; color: var(--k-primary) !important; }
-#contenido-dinamico { background: var(--k-bg) !important; }
 
-/* Superficies */
+.btn-nav i {
+  margin-right: 5px;
+  font-size: 0.95rem;
+}
+
+.btn-nav:hover {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: var(--pitaya-white) !important;
+}
+
+.btn-nav.active {
+  background: rgba(36, 167, 127, 0.10) !important;
+  border-bottom-color: var(--pitaya-green) !important;
+  color: var(--pitaya-green) !important;
+}
+
+.btn-nav.text-warning, .btn-nav.border-warning {
+  color: var(--pitaya-pink) !important;
+  border-color: rgba(218, 60, 122, 0.4) !important;
+}
+.btn-nav.text-warning:hover {
+  background: rgba(218, 60, 122, 0.12) !important;
+  color: #FFFFFF !important;
+}
+
+.btn-nav.text-info, .btn-nav.border-info {
+  color: var(--pitaya-blue) !important;
+  border-color: rgba(23, 160, 198, 0.4) !important;
+}
+.btn-nav.text-info:hover {
+  background: rgba(23, 160, 198, 0.12) !important;
+  color: #FFFFFF !important;
+}
+
+/* ==============================================================================
+   SUPERFICIES, TARJETAS Y CONTENEDORES (CARDS & PANELS)
+   ============================================================================== */
 .card, .sat-panel, .sat-filtros, .modal-content,
 .bg-dark, .bg-card, .list-group-item.bg-dark {
-  background: var(--k-surface) !important;
-  color: var(--k-text) !important;
-  border-color: var(--k-border) !important;
+  background: var(--pitaya-surface) !important;
+  background-color: var(--pitaya-surface) !important;
+  color: var(--pitaya-text) !important;
+  border: 1px solid var(--pitaya-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
 }
-.card, .sat-panel, .modal-content {
-  box-shadow: 0 3px 12px rgba(34, 70, 92, .09) !important;
-}
+
 .card-header, .card-footer, .modal-header, .modal-footer {
-  background: var(--k-surface-2) !important;
-  color: var(--k-text) !important;
-  border-color: var(--k-border) !important;
-}
-.text-white { color: var(--k-text) !important; }
-.text-info, .text-azul { color: #0a789f !important; }
-.text-secondary, .text-muted, .label-min, .sat-filtros .form-label { color: var(--k-muted) !important; }
-.border-secondary { border-color: var(--k-border) !important; }
-
-/* Formularios */
-.form-control, .form-select, .input-group-text, .form-control-min,
-.sat-filtros .form-control, .sat-filtros .form-select {
-  background-color: #fff !important;
-  color: var(--k-text) !important;
-  border-color: #bdccd6 !important;
-}
-.form-control:focus, .form-select:focus, .form-control-min:focus {
-  border-color: #2c96be !important;
-  box-shadow: 0 0 0 .2rem rgba(44,150,190,.15) !important;
-}
-.form-control::placeholder { color: #91a0aa !important; }
-.input-group-text { background: #edf5f9 !important; color: #176b91 !important; font-weight: 600; }
-.form-check-input { border-color: #9db0bd !important; }
-.preview-logo, .vigencia-box {
-  background: #f6fafc !important;
-  border-color: var(--k-border) !important;
-  color: #176b91 !important;
-}
-.nav-tabs { border-color: var(--k-border) !important; }
-.nav-tabs .nav-link { color: var(--k-muted) !important; }
-.nav-tabs .nav-link.active {
-  background: #fff !important;
-  color: #087ca6 !important;
-  border-bottom-color: #168fba !important;
+  background: var(--pitaya-surface-elevated) !important;
+  background-color: var(--pitaya-surface-elevated) !important;
+  color: var(--pitaya-text) !important;
+  border-color: var(--pitaya-border) !important;
 }
 
-/* Botones */
-.btn-primary { background: #176b94 !important; border-color: #176b94 !important; }
-.btn-primary:hover { background: #10597c !important; border-color: #10597c !important; }
-.btn-info { background: #168eb8 !important; border-color: #168eb8 !important; color: #fff !important; }
-.btn-success { background: var(--k-success) !important; border-color: var(--k-success) !important; }
-.btn-warning { background: #e8a91b !important; border-color: #e8a91b !important; color: #172b3a !important; }
-.btn-secondary { background: #6c8290 !important; border-color: #6c8290 !important; }
-.btn-outline-danger { color: #fff !important; border-color: rgba(255,255,255,.65) !important; }
-.btn-outline-danger:hover { background: var(--k-danger) !important; border-color: var(--k-danger) !important; }
-
-/* Tablas y DataTables */
-.table, .table-dark {
-  --bs-table-bg: #fff !important;
-  --bs-table-color: var(--k-text) !important;
-  --bs-table-border-color: #d6e1e8 !important;
-  --bs-table-striped-bg: #f6f9fb !important;
-  --bs-table-striped-color: var(--k-text) !important;
-  --bs-table-hover-bg: var(--k-hover) !important;
-  --bs-table-hover-color: var(--k-text) !important;
-  color: var(--k-text) !important;
-  border-color: #d6e1e8 !important;
-}
-.table > :not(caption) > * > * { background-color: inherit !important; color: inherit !important; border-color: #d6e1e8 !important; }
-.table thead th, table.dataTable thead th,
-#tablaFacturas thead th, #tablaSolicitudesSat thead th, #tablaDIOT thead th {
-  background: var(--k-header) !important;
-  color: #153f5c !important;
-  border-color: #bdd0dc !important;
-  font-weight: 700 !important;
-}
-.table tbody td, #tablaFacturas tbody td, #tablaSolicitudesSat tbody td, #tablaDIOT tbody td {
-  background: #fff !important;
-  color: var(--k-text) !important;
-  border-color: #d6e1e8 !important;
-}
-.table-striped > tbody > tr:nth-of-type(odd) > * { background: #f7fafc !important; }
-.table-hover > tbody > tr:hover > * { background: var(--k-hover) !important; }
-table.dataTable tbody tr.selected > *, table.dataTable tbody tr.active > *,
-.table tbody tr.table-active > * { background: var(--k-selected) !important; color: #113e59 !important; }
-.table tfoot td, .table tfoot th, #tablaFacturas tfoot td, #tablaDIOT tfoot td {
-  background: #edf3f6 !important;
-  color: #173f58 !important;
-  border-top: 2px solid #b9ccd8 !important;
-}
-.dataTables_wrapper, .dataTables_info, .dataTables_length, .dataTables_filter { color: var(--k-text) !important; }
-div.dataTables_wrapper div.dataTables_length select,
-div.dataTables_wrapper div.dataTables_filter input {
-  background: #fff !important;
-  color: var(--k-text) !important;
-  border: 1px solid #bdccd6 !important;
-}
-.page-link {
-  background: #fff !important;
-  color: #176b94 !important;
-  border-color: #c8d6df !important;
-}
-.page-item.active .page-link { background: #167fac !important; border-color: #167fac !important; color: #fff !important; }
-.page-item.disabled .page-link { background: #f1f4f6 !important; color: #84939c !important; }
-.dataTables_scrollBody, .dataTables_scrollHead, .dataTables_scrollFoot { border-color: #c9d7e0 !important; }
-
-/* Listas, avisos y modales */
-.list-group-item { background: #fff !important; color: var(--k-text) !important; border-color: var(--k-border) !important; }
-.list-group-item:hover, .list-group-item.active { background: var(--k-hover) !important; color: var(--k-primary) !important; }
-.alert-dark { background: #e8f1f6 !important; color: var(--k-text) !important; border-color: #c7d8e2 !important; }
-.modal-backdrop.show { opacity: .38 !important; }
-.btn-close { filter: none !important; }
-
-/* Scroll */
-* { scrollbar-color: #9eb3c0 #eef3f6; scrollbar-width: thin; }
-::-webkit-scrollbar { width: 11px; height: 11px; }
-::-webkit-scrollbar-track { background: #eef3f6; }
-::-webkit-scrollbar-thumb { background: #9eb3c0; border-radius: 8px; border: 2px solid #eef3f6; }
-
-/* ==========================================================
-   CAPA FINAL DE COMPATIBILIDAD
-   Sobrescribe los estilos oscuros heredados de los módulos
-   cargados dinámicamente dentro de #contenido-dinamico.
-   ========================================================== */
-#contenido-dinamico,
-#contenido-dinamico .container-fluid,
-#contenido-dinamico .animate__animated {
-  color: var(--k-text) !important;
+.modal-header .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%) !important;
 }
 
-#contenido-dinamico .bg-dark,
-#contenido-dinamico .bg-black,
-#contenido-dinamico .card,
-#contenido-dinamico .card.bg-dark,
-#contenido-dinamico .modal-content,
-#contenido-dinamico .modal-content.bg-dark,
-#contenido-dinamico .table-responsive,
-#contenido-dinamico .contenedor-tabla-principal,
-#contenido-dinamico .dataTables_wrapper,
-#contenido-dinamico .dataTables_scroll,
-#contenido-dinamico .dataTables_scrollBody,
-#contenido-dinamico .dataTables_scrollHead,
-#contenido-dinamico .dataTables_scrollFoot {
-  background: #fff !important;
-  background-color: #fff !important;
-  color: var(--k-text) !important;
-  border-color: var(--k-border) !important;
+#contenido-dinamico {
+  background: var(--pitaya-bg) !important;
+  min-height: calc(100vh - 120px);
+  padding: 24px 20px !important;
 }
 
-#contenido-dinamico .text-white,
-#contenido-dinamico .text-light,
-#contenido-dinamico .table-dark,
-#contenido-dinamico .table-dark td,
-#contenido-dinamico .table-dark th {
-  color: var(--k-text) !important;
+/* Tarjetas KPI Hero / Estadísticas */
+.kpi-card {
+  background: var(--pitaya-surface) !important;
+  border: 1px solid var(--pitaya-border) !important;
+  border-radius: 14px !important;
+  padding: 20px 24px !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease !important;
 }
 
-/* Formularios y modales claros, incluso cuando los módulos traen !important */
-#contenido-dinamico input,
-#contenido-dinamico select,
-#contenido-dinamico textarea,
-#contenido-dinamico .form-control,
-#contenido-dinamico .form-select,
-#contenido-dinamico .form-control-min,
-#contenido-dinamico .input-group-text,
-#contenido-dinamico .modal input,
-#contenido-dinamico .modal select,
-#contenido-dinamico .modal textarea {
-  background: #fff !important;
-  background-color: #fff !important;
-  color: #172b3a !important;
-  border-color: #b9cad5 !important;
+.kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--pitaya-border-bright) !important;
 }
-#contenido-dinamico input::placeholder,
-#contenido-dinamico textarea::placeholder,
-#contenido-dinamico .form-control::placeholder {
-  color: #8798a5 !important;
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--pitaya-grad-green-blue);
+}
+
+.kpi-card.accent-pink::before {
+  background: var(--pitaya-grad-blue-pink);
+}
+
+/* ==============================================================================
+   BOTONES DEL SISTEMA DE DISEÑO
+   ============================================================================== */
+.btn {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  padding: 0.5rem 1.1rem !important;
+  font-size: 0.88rem !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+/* Primary: Pitaya Green (#24A77F) */
+.btn-primary, .btn-success, .btn-action-primary {
+  background: var(--pitaya-green) !important;
+  background-color: var(--pitaya-green) !important;
+  border: 1px solid var(--pitaya-green) !important;
+  color: var(--pitaya-white) !important;
+  box-shadow: 0 2px 10px rgba(36, 167, 127, 0.25) !important;
+}
+.btn-primary:hover, .btn-success:hover, .btn-action-primary:hover {
+  background: var(--pitaya-green-hover) !important;
+  border-color: var(--pitaya-green-hover) !important;
+  box-shadow: 0 4px 16px rgba(36, 167, 127, 0.40) !important;
+}
+
+/* Secondary / Tech: Pitaya Blue (#17A0C6) */
+.btn-info, .btn-secondary, .btn-action-secondary {
+  background: var(--pitaya-blue) !important;
+  background-color: var(--pitaya-blue) !important;
+  border: 1px solid var(--pitaya-blue) !important;
+  color: var(--pitaya-white) !important;
+  box-shadow: 0 2px 10px rgba(23, 160, 198, 0.25) !important;
+}
+.btn-info:hover, .btn-secondary:hover, .btn-action-secondary:hover {
+  background: var(--pitaya-blue-hover) !important;
+  border-color: var(--pitaya-blue-hover) !important;
+  box-shadow: 0 4px 16px rgba(23, 160, 198, 0.40) !important;
+}
+
+/* Accent: Pitaya Pink (#DA3C7A) */
+.btn-danger, .btn-warning, .btn-action-pink {
+  background: var(--pitaya-pink) !important;
+  background-color: var(--pitaya-pink) !important;
+  border: 1px solid var(--pitaya-pink) !important;
+  color: var(--pitaya-white) !important;
+  box-shadow: 0 2px 10px rgba(218, 60, 122, 0.25) !important;
+}
+.btn-danger:hover, .btn-warning:hover, .btn-action-pink:hover {
+  background: var(--pitaya-pink-hover) !important;
+  border-color: var(--pitaya-pink-hover) !important;
+  box-shadow: 0 4px 16px rgba(218, 60, 122, 0.40) !important;
+}
+
+/* Outline Buttons */
+.btn-outline-primary {
+  color: var(--pitaya-green) !important;
+  border-color: var(--pitaya-green) !important;
+  background: transparent !important;
+}
+.btn-outline-primary:hover {
+  background: var(--pitaya-green) !important;
+  color: var(--pitaya-white) !important;
+}
+
+.btn-outline-info {
+  color: var(--pitaya-blue) !important;
+  border-color: var(--pitaya-blue) !important;
+  background: transparent !important;
+}
+.btn-outline-info:hover {
+  background: var(--pitaya-blue) !important;
+  color: var(--pitaya-white) !important;
+}
+
+.btn-outline-danger {
+  color: #ff6b7e !important;
+  border-color: rgba(224, 71, 91, 0.5) !important;
+  background: transparent !important;
+}
+.btn-outline-danger:hover {
+  background: rgba(224, 71, 91, 0.2) !important;
+  border-color: #e0475b !important;
+  color: #FFFFFF !important;
+}
+
+.btn-outline-warning {
+  color: var(--pitaya-pink) !important;
+  border-color: rgba(218, 60, 122, 0.5) !important;
+  background: transparent !important;
+}
+.btn-outline-warning:hover {
+  background: var(--pitaya-pink) !important;
+  color: #FFFFFF !important;
+}
+
+/* ==============================================================================
+   FORMULARIOS Y CAMPOS DE ENTRADA (INPUTS & SELECTS)
+   ============================================================================== */
+.form-control, .form-select, .form-control-min,
+.sat-filtros .form-control, .sat-filtros .form-select,
+#contenido-dinamico input, #contenido-dinamico select, #contenido-dinamico textarea {
+  background: var(--pitaya-bg) !important;
+  background-color: var(--pitaya-bg) !important;
+  color: var(--pitaya-text) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 8px !important;
+  padding: 0.5rem 0.85rem !important;
+  font-size: 0.88rem !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.form-control:focus, .form-select:focus,
+#contenido-dinamico input:focus, #contenido-dinamico select:focus {
+  border-color: var(--pitaya-green) !important;
+  box-shadow: 0 0 0 3px rgba(36, 167, 127, 0.20) !important;
+  outline: none !important;
+}
+
+.form-control::placeholder,
+#contenido-dinamico input::placeholder {
+  color: var(--pitaya-text-subtle) !important;
   opacity: 1 !important;
 }
-#contenido-dinamico input:disabled,
-#contenido-dinamico select:disabled,
-#contenido-dinamico textarea:disabled,
-#contenido-dinamico input[readonly],
-#contenido-dinamico textarea[readonly] {
-  background: #eef3f6 !important;
-  color: #536a79 !important;
+
+.input-group-text {
+  background: var(--pitaya-surface-elevated) !important;
+  color: var(--pitaya-text-muted) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  font-weight: 500 !important;
 }
-#contenido-dinamico .form-control:focus,
-#contenido-dinamico .form-select:focus,
-#contenido-dinamico .form-control-min:focus {
-  background: #fff !important;
-  color: #172b3a !important;
-  border-color: #198db9 !important;
-  box-shadow: 0 0 0 .18rem rgba(25,141,185,.14) !important;
+
+.form-select option {
+  background: var(--pitaya-surface-elevated) !important;
+  color: var(--pitaya-text) !important;
 }
-#contenido-dinamico .label-min,
-#contenido-dinamico label,
-#contenido-dinamico .form-label {
-  color: #526a79 !important;
+
+/* ==============================================================================
+   TABLAS Y DATATABLES (HIGH DENSITY ENTERPRISE TABLE)
+   ============================================================================== */
+.table, .table-dark, #tablaFacturas, #tablaSolicitudesSat, #tablaDIOT {
+  --bs-table-bg: var(--pitaya-surface) !important;
+  --bs-table-color: var(--pitaya-text) !important;
+  --bs-table-border-color: rgba(255, 255, 255, 0.06) !important;
+  --bs-table-striped-bg: #242424 !important;
+  --bs-table-striped-color: var(--pitaya-text) !important;
+  --bs-table-hover-bg: var(--pitaya-surface-hover) !important;
+  --bs-table-hover-color: var(--pitaya-white) !important;
+  background-color: var(--pitaya-surface) !important;
+  color: var(--pitaya-text) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
-#contenido-dinamico .input-group-text {
-  background: #edf5f9 !important;
-  color: #126b91 !important;
+
+.table thead th, table.dataTable thead th,
+#tablaFacturas thead th, #tablaSolicitudesSat thead th, #tablaDIOT thead th {
+  background: #1c1c1c !important;
+  background-color: #1c1c1c !important;
+  color: var(--pitaya-text-muted) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 12px 14px !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.12) !important;
+  vertical-align: middle !important;
+}
+
+.table tbody td, #tablaFacturas tbody td, #tablaSolicitudesSat tbody td, #tablaDIOT tbody td {
+  background: inherit !important;
+  color: var(--pitaya-text) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  padding: 10px 14px !important;
+  font-size: 0.85rem !important;
+  vertical-align: middle !important;
+}
+
+.table tbody tr:hover td, #tablaFacturas tbody tr:hover td {
+  background: var(--pitaya-surface-hover) !important;
+}
+
+.table tfoot td, .table tfoot th, #tablaFacturas tfoot td, #tablaDIOT tfoot td {
+  background: var(--pitaya-surface-elevated) !important;
+  color: var(--pitaya-text) !important;
+  border-top: 2px solid rgba(255, 255, 255, 0.12) !important;
   font-weight: 700 !important;
 }
 
-/* Modales tipo KConta */
-#contenido-dinamico .modal-content {
-  border: 1px solid #c8d7e0 !important;
-  border-radius: 14px !important;
-  box-shadow: 0 18px 55px rgba(20,54,75,.24) !important;
-  overflow: hidden;
-}
-#contenido-dinamico .modal-header,
-#contenido-dinamico .modal-footer {
-  background: #f8fafc !important;
-  border-color: #d4e0e7 !important;
-}
-#contenido-dinamico .modal-body {
-  background: #fff !important;
-  color: var(--k-text) !important;
-}
-#contenido-dinamico .modal-title,
-#contenido-dinamico .modal-header b,
-#contenido-dinamico .modal-header strong {
-  color: #0d6f98 !important;
-}
-#contenido-dinamico .btn-close,
-#contenido-dinamico .btn-close-white {
-  filter: none !important;
-  opacity: .7 !important;
-}
-#contenido-dinamico .nav-tabs .nav-link {
-  background: transparent !important;
-  color: #647988 !important;
-  border: 0 !important;
-  border-bottom: 3px solid transparent !important;
-}
-#contenido-dinamico .nav-tabs .nav-link.active {
-  background: #eef6fa !important;
-  color: #0c6f99 !important;
-  border-bottom-color: #168fba !important;
-}
-#contenido-dinamico .vigencia-box,
-#contenido-dinamico .preview-logo {
-  background: #f4f8fb !important;
-  color: #176b91 !important;
-  border-color: #bfd0da !important;
+/* Badges y chips de estado SAT */
+.badge-sat-vigente, .badge.bg-success {
+  background: rgba(36, 167, 127, 0.15) !important;
+  color: var(--pitaya-green) !important;
+  border: 1px solid rgba(36, 167, 127, 0.35) !important;
+  font-weight: 600 !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
 }
 
-/* DataTables claros y legibles, incluidos FixedColumns */
-#contenido-dinamico table.dataTable,
-#contenido-dinamico table.dataTable.table-dark,
-#contenido-dinamico #tablaFacturas,
-#contenido-dinamico #tablaUsuarios,
-#contenido-dinamico #tablaEmpresas,
-#contenido-dinamico #tablaSolicitudesSat,
-#contenido-dinamico #tablaDIOT {
-  background: #fff !important;
-  color: var(--k-text) !important;
-}
-#contenido-dinamico table.dataTable thead th,
-#contenido-dinamico table.dataTable tfoot th,
-#contenido-dinamico #tablaFacturas thead th,
-#contenido-dinamico #tablaFacturas tfoot th,
-#contenido-dinamico #tablaUsuarios thead th,
-#contenido-dinamico #tablaEmpresas thead th,
-#contenido-dinamico #tablaSolicitudesSat thead th,
-#contenido-dinamico #tablaDIOT thead th {
-  background: #e6f1f7 !important;
-  background-color: #e6f1f7 !important;
-  color: #153f5c !important;
-  border-color: #bfd0dc !important;
-}
-#contenido-dinamico table.dataTable tbody tr,
-#contenido-dinamico table.dataTable tbody td,
-#contenido-dinamico #tablaFacturas tbody tr,
-#contenido-dinamico #tablaFacturas tbody td,
-#contenido-dinamico #tablaUsuarios tbody tr,
-#contenido-dinamico #tablaUsuarios tbody td,
-#contenido-dinamico #tablaEmpresas tbody tr,
-#contenido-dinamico #tablaEmpresas tbody td,
-#contenido-dinamico #tablaSolicitudesSat tbody tr,
-#contenido-dinamico #tablaSolicitudesSat tbody td,
-#contenido-dinamico #tablaDIOT tbody tr,
-#contenido-dinamico #tablaDIOT tbody td,
-#contenido-dinamico .dtfc-fixed-left,
-#contenido-dinamico .dtfc-fixed-right {
-  background: #fff !important;
-  background-color: #fff !important;
-  color: #173247 !important;
-  border-color: #d5e0e7 !important;
-}
-#contenido-dinamico table.dataTable tbody tr:nth-child(even) td,
-#contenido-dinamico #tablaFacturas tbody tr:nth-child(even) td,
-#contenido-dinamico #tablaUsuarios tbody tr:nth-child(even) td,
-#contenido-dinamico #tablaEmpresas tbody tr:nth-child(even) td,
-#contenido-dinamico #tablaSolicitudesSat tbody tr:nth-child(even) td,
-#contenido-dinamico #tablaDIOT tbody tr:nth-child(even) td {
-  background: #f7fafc !important;
-}
-#contenido-dinamico table.dataTable.table-hover tbody tr:hover td,
-#contenido-dinamico #tablaFacturas.table-hover tbody tr:hover td,
-#contenido-dinamico #tablaUsuarios.table-hover tbody tr:hover td,
-#contenido-dinamico #tablaEmpresas.table-hover tbody tr:hover td,
-#contenido-dinamico #tablaSolicitudesSat.table-hover tbody tr:hover td,
-#contenido-dinamico #tablaDIOT.table-hover tbody tr:hover td {
-  background: #e5f3fb !important;
-  color: #123e59 !important;
-  cursor: pointer;
-}
-#contenido-dinamico table.dataTable tbody tr.selected td,
-#contenido-dinamico table.dataTable tbody tr.active td,
-#contenido-dinamico table.dataTable tbody tr.table-active td,
-#contenido-dinamico #tablaFacturas tbody tr.selected td,
-#contenido-dinamico #tablaFacturas tbody tr.table-active td {
-  background: #d5ebf8 !important;
-  color: #0f3d59 !important;
-}
-#contenido-dinamico table.dataTable tfoot td,
-#contenido-dinamico #tablaFacturas tfoot td,
-#contenido-dinamico #tablaDIOT tfoot td {
-  background: #edf3f7 !important;
-  color: #173f58 !important;
-  border-color: #bfd0dc !important;
-}
-#contenido-dinamico .dataTables_filter,
-#contenido-dinamico .dataTables_length,
-#contenido-dinamico .dataTables_info,
-#contenido-dinamico .dataTables_paginate {
-  color: #3d596b !important;
-}
-#contenido-dinamico .dataTables_filter input,
-#contenido-dinamico .dataTables_length select {
-  background: #fff !important;
-  color: #173247 !important;
-  border: 1px solid #b9cad5 !important;
-}
-#contenido-dinamico .dtfc-fixed-left {
-  border-right: 2px solid #9fc2d5 !important;
+.badge-sat-cancelado, .badge.bg-danger {
+  background: rgba(224, 71, 91, 0.15) !important;
+  color: #ff6b7e !important;
+  border: 1px solid rgba(224, 71, 91, 0.35) !important;
+  font-weight: 600 !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
 }
 
-/* Panel de carga XML y bitácoras */
-#contenido-dinamico #log_carga {
-  background: #f5f8fa !important;
-  color: #223f52 !important;
-  border: 1px solid #b9d7c7 !important;
+.badge-sat-alerta, .badge.bg-warning {
+  background: rgba(218, 60, 122, 0.15) !important;
+  color: var(--pitaya-pink) !important;
+  border: 1px solid rgba(218, 60, 122, 0.35) !important;
+  font-weight: 600 !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
 }
 
-/* Los botones con texto oscuro heredado deben conservar contraste */
-#contenido-dinamico .btn-info,
-#contenido-dinamico .btn-primary,
-#contenido-dinamico .btn-success,
-#contenido-dinamico .btn-secondary {
-  color: #fff !important;
+/* Paginación DataTables */
+.dataTables_wrapper, .dataTables_info, .dataTables_length, .dataTables_filter {
+  color: var(--pitaya-text-muted) !important;
+  font-size: 0.85rem !important;
 }
-#contenido-dinamico .btn-warning {
-  color: #263746 !important;
+
+.page-link {
+  background: var(--pitaya-surface) !important;
+  color: var(--pitaya-text-muted) !important;
+  border: 1px solid var(--pitaya-border) !important;
+  margin: 0 2px !important;
+  border-radius: 6px !important;
+}
+
+.page-link:hover {
+  background: var(--pitaya-surface-hover) !important;
+  color: var(--pitaya-white) !important;
+  border-color: var(--pitaya-border-bright) !important;
+}
+
+.page-item.active .page-link {
+  background: var(--pitaya-green) !important;
+  border-color: var(--pitaya-green) !important;
+  color: var(--pitaya-white) !important;
+  font-weight: 700 !important;
+}
+
+.page-item.disabled .page-link {
+  background: var(--pitaya-dark-2) !important;
+  color: var(--pitaya-text-subtle) !important;
+}
+
+/* ==============================================================================
+   DROPDOWNS, LISTAS Y ALERTAS
+   ============================================================================== */
+.dropdown-menu, .dropdown-menu-dark {
+  background: var(--pitaya-surface-elevated) !important;
+  border: 1px solid var(--pitaya-border-bright) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 10px !important;
+  padding: 6px !important;
+}
+
+.dropdown-item {
+  color: var(--pitaya-text-muted) !important;
+  border-radius: 6px !important;
+  padding: 8px 14px !important;
+  font-size: 0.88rem !important;
+  transition: all 0.15s ease !important;
+}
+
+.dropdown-item:hover {
+  background: var(--pitaya-surface-hover) !important;
+  color: var(--pitaya-white) !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background: var(--pitaya-green) !important;
+  color: #FFFFFF !important;
+}
+
+.dropdown-divider {
+  border-color: var(--pitaya-border) !important;
+}
+
+.alert-dark, .alert-info {
+  background: rgba(23, 160, 198, 0.12) !important;
+  border: 1px solid rgba(23, 160, 198, 0.3) !important;
+  color: #79d8f3 !important;
+  border-radius: 10px !important;
+}
+
+.alert-success {
+  background: rgba(36, 167, 127, 0.12) !important;
+  border: 1px solid rgba(36, 167, 127, 0.3) !important;
+  color: #5debba !important;
+  border-radius: 10px !important;
+}
+
+.alert-danger {
+  background: rgba(218, 60, 122, 0.12) !important;
+  border: 1px solid rgba(218, 60, 122, 0.3) !important;
+  color: #f77cae !important;
+  border-radius: 10px !important;
+}
+
+/* ==============================================================================
+   SWEETALERT2 MODAL CUSTOMIZATION (DARK THEME PITAYACODE)
+   ============================================================================== */
+.swal2-popup {
+  background: var(--pitaya-surface-elevated) !important;
+  color: var(--pitaya-text) !important;
+  border: 1px solid var(--pitaya-border-bright) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+.swal2-title {
+  color: var(--pitaya-white) !important;
+}
+
+.swal2-html-container {
+  color: var(--pitaya-text-muted) !important;
+}
+
+.swal2-confirm {
+  background-color: var(--pitaya-green) !important;
+  border-radius: 8px !important;
+}
+
+.swal2-cancel {
+  border-radius: 8px !important;
+}
+
+/* ==============================================================================
+   SCROLLBAR MODERNA MINIMALISTA
+   ============================================================================== */
+* {
+  scrollbar-color: #383838 #202020;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #202020;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #383838;
+  border-radius: 6px;
+  border: 2px solid #202020;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
 }

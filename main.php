@@ -61,34 +61,114 @@ if (session_status() === PHP_SESSION_ACTIVE) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visor XML Pro</title>
+    <title>PitayaCode • Visor XML Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <style>
-        :root { --bg-dark: #0d1117; --bg-card: #161b22; --azul: #58a6ff; --borde: #30363d; }
-        body { background-color: var(--bg-dark); color: #c9d1d9; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; }
-        .navbar-custom { background-color: var(--bg-card); border-bottom: 1px solid var(--borde); padding: 0.5rem 1rem; }
-        .btn-nav { background: transparent; border: 1px solid var(--borde); color: #c9d1d9; padding: 0.4rem 0.8rem; border-radius: 6px; margin: 0 0.2rem; transition: 0.2s; font-size: 0.9rem; }
-        .btn-nav:hover { background: #21262d; border-color: #8b949e; }
-        .btn-nav.active { background: #238636; border-color: #2ea043; color: white; }
-        #contenido-dinamico { padding: 20px; }
+        :root {
+            --bg-dark: #202020;
+            --bg-card: #282828;
+            --pitaya-green: #24A77F;
+            --pitaya-blue: #17A0C6;
+            --pitaya-pink: #DA3C7A;
+            --borde: #383838;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: #F5F5F5;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .navbar-custom {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--borde);
+            padding: 0.6rem 1.25rem;
+        }
+        .brand-pitaya-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            font-size: 1.05rem;
+        }
+        .brand-pitaya-title i {
+            color: var(--pitaya-green);
+            font-size: 1.2rem;
+        }
+        .brand-pitaya-title .brand-accent {
+            background: linear-gradient(135deg, var(--pitaya-green) 0%, var(--pitaya-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        .brand-pitaya-title .brand-sub {
+            color: #A0A0A0;
+            font-weight: 500;
+            font-size: 0.88rem;
+        }
+        .btn-nav {
+            background: transparent;
+            border: 1px solid transparent;
+            color: #A0A0A0;
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            margin: 0 0.15rem;
+            transition: all 0.2s ease;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .btn-nav:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: #FFFFFF;
+            border-color: #383838;
+        }
+        .btn-nav.active {
+            background: var(--pitaya-green);
+            border-color: var(--pitaya-green);
+            color: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(36, 167, 127, 0.35);
+        }
+        #contenido-dinamico {
+            padding: 24px;
+            min-height: calc(100vh - 120px);
+        }
         .empresa-activa {
             display: inline-flex;
             align-items: center;
             gap: 7px;
-            background: #0d419d;
-            border: 1px solid #58a6ff;
-            color: #ffffff;
-            border-radius: 7px;
-            padding: 6px 12px;
-            font-size: 0.84rem;
+            background: rgba(36, 167, 127, 0.1);
+            border: 1px solid rgba(36, 167, 127, 0.35);
+            color: #24A77F;
+            border-radius: 8px;
+            padding: 5px 12px;
+            font-size: 0.82rem;
             font-weight: 700;
             letter-spacing: .2px;
-            box-shadow: 0 0 0 1px rgba(88,166,255,.08);
         }
-        .empresa-activa .etiqueta { color: #9ecbff; font-size: 0.72rem; font-weight: 700; }
-        .usuario-activo { color: #8b949e; font-size: 0.78rem; margin-left: 10px; white-space: nowrap; }
+        .empresa-activa .etiqueta {
+            color: #A0A0A0;
+            font-size: 0.70rem;
+            font-weight: 600;
+        }
+        .usuario-activo {
+            color: #A0A0A0;
+            font-size: 0.80rem;
+            margin-left: 14px;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+        .usuario-activo:hover {
+            color: #FFFFFF;
+        }
+        .navbar-buttons {
+            background-color: #242424 !important;
+            border-bottom: 1px solid #333333 !important;
+        }
         @media (max-width: 768px) {
             .navbar-custom .container-fluid { align-items: flex-start !important; gap: 8px; }
             .navbar-custom .d-flex.align-items-center { flex-wrap: wrap; }
@@ -96,17 +176,21 @@ if (session_status() === PHP_SESSION_ACTIVE) {
             .usuario-activo { margin-left: 0; }
         }
     </style>
-    <link rel="stylesheet" href="assets/css/tema_kconta.css?v=20260717b">
+    <link rel="stylesheet" href="assets/css/tema_kconta.css?v=pitayacode1">
 </head>
 <body>
 
 <nav class="navbar navbar-custom">
     <div class="container-fluid d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-            <span class="fw-bold me-3 text-azul"><i class="bi bi-cpu"></i> Visor XML Pro</span>
+            <span class="brand-pitaya-title me-3">
+                <i class="bi bi-cpu"></i>
+                <span class="brand-accent">PitayaCode</span>
+                <span class="brand-sub">Visor XML Pro</span>
+            </span>
             <div class="empresa-activa" title="Empresa seleccionada actualmente">
                 <i class="bi bi-building-check"></i>
-                <span class="etiqueta">EMPRESA ACTIVA:</span>
+                <span class="etiqueta">EMPRESA:</span>
                 <span><?= htmlspecialchars(mb_strtoupper($nombreEmpresa, 'UTF-8')) ?></span>
             </div>
             <button type="button" class="usuario-activo btn btn-link p-0 text-decoration-none" onclick="cargarModulo('mi_perfil')" title="Mi perfil / Cambiar contraseña">
