@@ -1,0 +1,26 @@
+<?php
+session_start();
+require_once '../config/db.php';
+require_once '../includes/seguridad.php';
+seguridad_exigir_superadmin($pdo, false);
+if (empty($_SESSION['id_usuario']) || empty($_SESSION['es_superadmin'])) { http_response_code(403); exit('Acceso denegado'); }
+$usuarios=$pdo->query("SELECT u.id_usuario,u.nombre_real,z.nombre_zona,u.id_zona FROM usuarios u INNER JOIN zonas z ON u.id_zona=z.id_zona ORDER BY u.nombre_real")->fetchAll();
+?>
+<style>
+.perm-selector{display:flex;flex-wrap:wrap;gap:7px}.perm-btn{border:1px solid #9fb4c6;background:#fff;color:#38536a;border-radius:18px;padding:5px 11px;font-size:.78rem;cursor:pointer;transition:.15s}.perm-btn:hover{border-color:#1689b5}.perm-btn.activo{background:#0f7fa8;border-color:#0f7fa8;color:#fff;font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.18)}.perm-btn:disabled{opacity:.38;cursor:not-allowed}.perm-grupo{background:#f8fbfd;border:1px solid #d6e2eb;border-radius:8px;padding:10px;margin-top:10px}.perm-titulo{font-size:.72rem;color:#116989;font-weight:800;margin-bottom:7px;text-transform:uppercase}.empresa-permisos{padding:12px 16px!important}
+</style>
+<div class="animate__animated animate__fadeIn">
+<div class="mb-3"><h6 class="fw-bold"><i class="bi bi-shield-check me-2 text-info"></i>ASIGNACIÓN DE EMPRESAS</h6><p class="text-muted small">Selecciona un usuario y define, por cada empresa, los documentos y funciones que podrá utilizar.</p></div>
+<div class="row g-3"><div class="col-md-4"><div class="card"><div class="card-header py-2"><b class="small text-info text-uppercase">Usuarios</b></div><div class="list-group list-group-flush" style="max-height:500px;overflow-y:auto">
+<?php foreach($usuarios as $u): ?><button type="button" class="list-group-item list-group-item-action btn-user-asig" onclick="cargarListadoEmpresas(<?=$u['id_usuario']?>,<?=$u['id_zona']?>,this)"><div class="d-flex justify-content-between align-items-center"><span class="small fw-bold text-uppercase"><?=htmlspecialchars($u['nombre_real'])?></span><span class="badge bg-secondary" style="font-size:.6rem"><?=htmlspecialchars($u['nombre_zona'])?></span></div></button><?php endforeach; ?>
+</div></div></div>
+<div class="col-md-8"><div class="card"><div class="card-header py-2 d-flex justify-content-between"><b class="small text-info text-uppercase">Empresas de su Zona</b><button class="btn btn-info btn-sm fw-bold py-0 d-none" id="btnGuardarAsig" onclick="guardarAsignacion()"><i class="bi bi-save me-1"></i> GUARDAR CAMBIOS</button></div><div class="card-body p-0" id="contenedor_empresas" style="min-height:300px"><div class="text-center text-muted mt-5 py-5">Seleccione un usuario de la lista izquierda</div></div></div></div></div></div>
+<script>
+var idUsuarioActivo=0;
+function cargarListadoEmpresas(u,z,b){idUsuarioActivo=u;$('.btn-user-asig').removeClass('active');$(b).addClass('active');$('#contenedor_empresas').html('<div class="text-center py-5"><div class="spinner-border text-info"></div></div>');$.post('backend/asignacion_operaciones.php',{accion:'ver',id_user:u,id_zona:z},function(h){$('#contenedor_empresas').html(h);$('#btnGuardarAsig').removeClass('d-none')})}
+function togglePermisosEmpresa(id,a){let $f=$('.empresa-permisos[data-id-empresa="'+id+'"]');$f.find('.perm-btn').prop('disabled',!a);if(a&&$f.find('.perm-btn[data-selected="1"]').length===0){$f.find('.perm-btn[data-tipo],.perm-btn[data-accion],.perm-btn[data-sat]').addClass('activo').attr('data-selected','1');actualizaTodos($f)}}
+function alternarPermiso(btn){let $b=$(btn);if($b.prop('disabled'))return;$b.toggleClass('activo');$b.attr('data-selected',$b.hasClass('activo')?'1':'0');actualizaTodos($b.closest('.empresa-permisos'))}
+function seleccionarTodos(btn,grupo){let $b=$(btn),$f=$b.closest('.empresa-permisos'),sel=!$b.hasClass('activo'),q=grupo==='docs'?'.perm-btn[data-tipo]':(grupo==='sat'?'.perm-btn[data-sat]':'.perm-btn[data-accion]');$f.find(q).toggleClass('activo',sel).attr('data-selected',sel?'1':'0');$b.toggleClass('activo',sel).attr('data-selected',sel?'1':'0')}
+function actualizaTodos($f){[['docs','.perm-btn[data-tipo]','.perm-todos-docs'],['acc','.perm-btn[data-accion]','.perm-todos-acciones'],['sat','.perm-btn[data-sat]','.perm-todos-sat']].forEach(x=>{let $q=$f.find(x[1]),ok=$q.length&&$q.filter('.activo').length===$q.length;$f.find(x[2]).toggleClass('activo',ok).attr('data-selected',ok?'1':'0')})}
+function guardarAsignacion(){let a=[];$('.empresa-permisos').each(function(){let $f=$(this),$e=$f.find('.chk-empresa');if(!$e.is(':checked'))return;let t=[],ac=[],sat=[];$f.find('.perm-btn[data-tipo].activo').each(function(){t.push($(this).data('tipo'))});$f.find('.perm-btn[data-accion].activo').each(function(){ac.push($(this).data('accion'))});$f.find('.perm-btn[data-sat].activo').each(function(){sat.push($(this).data('sat'))});a.push({id_empresa:+$e.val(),tipos:t,acciones:ac,sat:sat})});$.post('backend/asignacion_operaciones.php',{accion:'guardar',id_user:idUsuarioActivo,asignaciones:JSON.stringify(a)},function(r){if(r.success)Swal.fire({icon:'success',title:'Permisos actualizados',text:'Los permisos por empresa quedaron guardados.',timer:1500,showConfirmButton:false});else Swal.fire('Error',r.error||'No se pudo guardar','error')},'json')}
+</script>

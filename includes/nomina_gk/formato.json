@@ -1,0 +1,396 @@
+{
+  "headers": [
+    "Registro Patronal",
+    "▼ Fecha Comprobante",
+    "Tipo Periodo",
+    "Ejercicio",
+    "Período",
+    "Inicio Período",
+    "Fin Período",
+    "Asociado Contabilidad",
+    "Departamento",
+    "Código Empleado",
+    "Nombre Receptor",
+    "Núm. Seguridad Social",
+    "Fecha Pago",
+    "Total",
+    "Neto",
+    "Estatus",
+    "Observaciones",
+    "UUID",
+    "Núm Concepto",
+    "Nombre Concepto",
+    "Gravado",
+    "Exento",
+    "Año Pago",
+    "CURP Empleado",
+    "RFC Receptor",
+    "RFC Emisor",
+    "Versión Comprobante",
+    "Clave SAT",
+    "Clave SAT Desc",
+    "Importe Deducción/Otro Pago",
+    "Fecha Timbrado",
+    "Ingreso No Acumulable",
+    "Total Pagado",
+    "Subsidio Causado",
+    "Ingreso Acumulable",
+    "USMO",
+    "Año Timbrado",
+    "Fecha Inicio Pago",
+    "Fecha Fin Pago",
+    "Mes Pago",
+    "Año Comprobante",
+    "Tipo Documento",
+    "Tipo Comprobante Desc"
+  ],
+  "widths": [
+    18.5546875,
+    23.88671875,
+    14.5546875,
+    10.6640625,
+    10.109375,
+    15.44140625,
+    13.33203125,
+    23.109375,
+    26.109375,
+    18.88671875,
+    37.33203125,
+    23.109375,
+    13.109375,
+    11.5546875,
+    7.6640625,
+    10.109375,
+    16.33203125,
+    38.5546875,
+    16.44140625,
+    59.5546875,
+    11.5546875,
+    13.0,
+    13.0,
+    23.5546875,
+    16.88671875,
+    14.5546875,
+    22.88671875,
+    11.88671875,
+    41.21875,
+    30.109375,
+    17.33203125,
+    24.109375,
+    14.5546875,
+    18.88671875,
+    21.0,
+    9.0,
+    15.6640625,
+    18.5546875,
+    16.33203125,
+    11.6640625,
+    19.5546875,
+    17.88671875,
+    24.5546875
+  ],
+  "mapping": [
+    {
+      "column": 1,
+      "header": "Registro Patronal",
+      "status": "XML",
+      "source": "Nomina/Emisor@RegistroPatronal",
+      "note": "Opcional; se deja en blanco si no viene."
+    },
+    {
+      "column": 2,
+      "header": "▼ Fecha Comprobante",
+      "status": "XML / base",
+      "source": "Comprobante@Fecha / facturas.fecha_emision",
+      "note": "La selección del visor usa esta fecha, no la fecha de pago."
+    },
+    {
+      "column": 3,
+      "header": "Tipo Periodo",
+      "status": "XML / base",
+      "source": "Nomina/Receptor@PeriodicidadPago / nomina_periodicidad_pago",
+      "note": "Clave SAT textual; se conservan ceros iniciales. No es TipoNomina O/E."
+    },
+    {
+      "column": 4,
+      "header": "Ejercicio",
+      "status": "Derivado",
+      "source": "Año de Nomina@FechaPago; respaldo FechaFinalPago / FechaInicialPago",
+      "note": "Criterio solicitado: usar el año de pago. Si no hay FechaPago válida, tomar año del fin del período; después inicio. No usar año de emisión."
+    },
+    {
+      "column": 5,
+      "header": "Período",
+      "status": "Base + fechas XML (condicional)",
+      "source": "nomina_periodo_config: empresa + ejercicio + fecha_inicio_periodo1 + dias_periodo",
+      "note": "Solo periodicidad 02 (7 días) o 03 (14 días), con inicio/fin exactamente alineados a un período completo del calendario configurado. Sin calendario o coincidencia, queda pendiente; no se usa semana ISO."
+    },
+    {
+      "column": 6,
+      "header": "Inicio Período",
+      "status": "XML / base",
+      "source": "Nomina@FechaInicialPago / nomina_fecha_inicial_pago",
+      "note": "Inicio del período según el XML, por criterio solicitado. Es el mismo dato que Fecha Inicio Pago (AL)."
+    },
+    {
+      "column": 7,
+      "header": "Fin Período",
+      "status": "XML / base",
+      "source": "Nomina@FechaFinalPago / nomina_fecha_final_pago",
+      "note": "Fin del período según el XML, por criterio solicitado. Es el mismo dato que Fecha Fin Pago (AM)."
+    },
+    {
+      "column": 8,
+      "header": "Asociado Contabilidad",
+      "status": "Pendiente",
+      "source": "Vínculo con contabilidad del sistema origen",
+      "note": "No hay relación inequívoca en la estructura recibida; no se inventa 0."
+    },
+    {
+      "column": 9,
+      "header": "Departamento",
+      "status": "XML",
+      "source": "Nomina/Receptor@Departamento",
+      "note": "Dato histórico del XML, no del puesto actual del empleado."
+    },
+    {
+      "column": 10,
+      "header": "Código Empleado",
+      "status": "XML / base",
+      "source": "Nomina/Receptor@NumEmpleado / nomina_num_empleado",
+      "note": "Texto para conservar ceros iniciales."
+    },
+    {
+      "column": 11,
+      "header": "Nombre Receptor",
+      "status": "XML / base",
+      "source": "Comprobante/Receptor@Nombre / cat_receptores.nombre",
+      "note": "Se prefiere el nombre timbrado."
+    },
+    {
+      "column": 12,
+      "header": "Núm. Seguridad Social",
+      "status": "XML",
+      "source": "Nomina/Receptor@NumSeguridadSocial",
+      "note": "Texto para conservar ceros iniciales."
+    },
+    {
+      "column": 13,
+      "header": "Fecha Pago",
+      "status": "XML / base",
+      "source": "Nomina@FechaPago / nomina_fecha_pago",
+      "note": "Fecha real de pago indicada en el complemento."
+    },
+    {
+      "column": 14,
+      "header": "Total",
+      "status": "XML / base",
+      "source": "Comprobante@Total / facturas.total_xml",
+      "note": "Total del CFDI; se repite por concepto. NO sumar la columna sin agrupar por UUID."
+    },
+    {
+      "column": 15,
+      "header": "Neto",
+      "status": "XML / base",
+      "source": "Comprobante@Total / facturas.total_xml",
+      "note": "Neto fiscal del CFDI, no depósito bancario. Se repite por concepto; no sumar filas."
+    },
+    {
+      "column": 16,
+      "header": "Estatus",
+      "status": "Base / XML",
+      "source": "facturas.estatus_sat / TimbreFiscalDigital",
+      "note": "Cancelado o Vigente según visor; Vigente con timbre se presenta como Timbrado. No consulta SAT en vivo."
+    },
+    {
+      "column": 17,
+      "header": "Observaciones",
+      "status": "Pendiente",
+      "source": "Observaciones del reporte original",
+      "note": "No se sustituye con observaciones_fiscales ni con Concepto; son datos distintos."
+    },
+    {
+      "column": 18,
+      "header": "UUID",
+      "status": "XML / base",
+      "source": "TimbreFiscalDigital@UUID / facturas.uuid",
+      "note": "Se valida que el XML corresponda al UUID seleccionado."
+    },
+    {
+      "column": 19,
+      "header": "Núm Concepto",
+      "status": "XML",
+      "source": "Percepcion|Deduccion|OtroPago@Clave",
+      "note": "Clave interna exacta; no se agregan prefijos P/D/O inventados."
+    },
+    {
+      "column": 20,
+      "header": "Nombre Concepto",
+      "status": "XML",
+      "source": "Percepcion|Deduccion|OtroPago@Concepto",
+      "note": "Concepto timbrado, distinto de la descripción oficial del catálogo SAT."
+    },
+    {
+      "column": 21,
+      "header": "Gravado",
+      "status": "XML",
+      "source": "Percepcion@ImporteGravado",
+      "note": "Solo percepciones; cero únicamente si viene explícito en XML."
+    },
+    {
+      "column": 22,
+      "header": "Exento",
+      "status": "XML",
+      "source": "Percepcion@ImporteExento",
+      "note": "Solo percepciones; no aplica a deducciones u otros pagos."
+    },
+    {
+      "column": 23,
+      "header": "Año Pago",
+      "status": "Derivado",
+      "source": "Año de FechaPago",
+      "note": "Se obtiene de M, sin sustituirlo por el año de emisión."
+    },
+    {
+      "column": 24,
+      "header": "CURP Empleado",
+      "status": "XML",
+      "source": "Nomina/Receptor@Curp",
+      "note": "Dato timbrado del empleado."
+    },
+    {
+      "column": 25,
+      "header": "RFC Receptor",
+      "status": "XML / base",
+      "source": "Comprobante/Receptor@Rfc / cat_receptores.rfc",
+      "note": "RFC receptor del CFDI."
+    },
+    {
+      "column": 26,
+      "header": "RFC Emisor",
+      "status": "XML / base",
+      "source": "Comprobante/Emisor@Rfc / cat_emisores.rfc",
+      "note": "RFC emisor del CFDI."
+    },
+    {
+      "column": 27,
+      "header": "Versión Comprobante",
+      "status": "XML / base",
+      "source": "Comprobante@Version / facturas.version_cfdi",
+      "note": "Versión del comprobante, no del complemento."
+    },
+    {
+      "column": 28,
+      "header": "Clave SAT",
+      "status": "XML",
+      "source": "@TipoPercepcion | @TipoDeduccion | @TipoOtroPago",
+      "note": "La clave depende del grupo del nodo; conservar ceros iniciales."
+    },
+    {
+      "column": 29,
+      "header": "Clave SAT Desc",
+      "status": "Pendiente",
+      "source": "Catálogos SAT de percepciones, deducciones y otros pagos",
+      "note": "El XML contiene la clave, no la descripción oficial. No se recibió catálogo en la base. No se sustituye con Concepto."
+    },
+    {
+      "column": 30,
+      "header": "Importe Deducción/Otro Pago",
+      "status": "XML",
+      "source": "Deduccion@Importe / OtroPago@Importe",
+      "note": "Solo deducciones y otros pagos; en percepciones queda en blanco."
+    },
+    {
+      "column": 31,
+      "header": "Fecha Timbrado",
+      "status": "XML",
+      "source": "TimbreFiscalDigital@FechaTimbrado",
+      "note": "Fecha Excel; la presentación conserva día/mes/año como el ejemplo."
+    },
+    {
+      "column": 32,
+      "header": "Ingreso No Acumulable",
+      "status": "XML condicional",
+      "source": "SeparacionIndemnizacion|JubilacionPensionRetiro@IngresoNoAcumulable",
+      "note": "Se coloca una sola vez por bloque especial, en la primera percepción compatible. No se calcula."
+    },
+    {
+      "column": 33,
+      "header": "Total Pagado",
+      "status": "XML condicional",
+      "source": "SeparacionIndemnizacion@TotalPagado",
+      "note": "Una sola vez en la primera percepción 022/023/025. No equivale al neto ni al depósito."
+    },
+    {
+      "column": 34,
+      "header": "Subsidio Causado",
+      "status": "XML condicional",
+      "source": "OtroPago/SubsidioAlEmpleo@SubsidioCausado",
+      "note": "Solo en el otro pago correspondiente. No confundir con Importe del otro pago."
+    },
+    {
+      "column": 35,
+      "header": "Ingreso Acumulable",
+      "status": "XML condicional",
+      "source": "SeparacionIndemnizacion|JubilacionPensionRetiro@IngresoAcumulable",
+      "note": "Una sola vez por bloque especial; no se recalcula fiscalmente."
+    },
+    {
+      "column": 36,
+      "header": "USMO",
+      "status": "XML condicional",
+      "source": "SeparacionIndemnizacion@UltimoSueldoMensOrd",
+      "note": "USMO se interpreta como Último Sueldo Mensual Ordinario. Confirmar con el contador la equivalencia del encabezado."
+    },
+    {
+      "column": 37,
+      "header": "Año Timbrado",
+      "status": "Derivado",
+      "source": "Año de FechaTimbrado",
+      "note": "Solo si el XML contiene fecha de timbrado válida."
+    },
+    {
+      "column": 38,
+      "header": "Fecha Inicio Pago",
+      "status": "XML / base",
+      "source": "Nomina@FechaInicialPago / nomina_fecha_inicial_pago",
+      "note": "Fechas del complemento; no se modifica el criterio de selección del visor."
+    },
+    {
+      "column": 39,
+      "header": "Fecha Fin Pago",
+      "status": "XML / base",
+      "source": "Nomina@FechaFinalPago / nomina_fecha_final_pago",
+      "note": "Fechas del complemento; no se presume número de período."
+    },
+    {
+      "column": 40,
+      "header": "Mes Pago",
+      "status": "Derivado",
+      "source": "Mes de FechaPago",
+      "note": "Número de mes obtenido de M."
+    },
+    {
+      "column": 41,
+      "header": "Año Comprobante",
+      "status": "Derivado",
+      "source": "Año de Comprobante@Fecha",
+      "note": "Año de la fecha de emisión, no ejercicio interno."
+    },
+    {
+      "column": 42,
+      "header": "Tipo Documento",
+      "status": "Clasificación",
+      "source": "CFDI",
+      "note": "Tipo de documento del visor."
+    },
+    {
+      "column": 43,
+      "header": "Tipo Comprobante Desc",
+      "status": "Clasificación",
+      "source": "Nómina",
+      "note": "Solo CFDI N; compatible con Nómina 1.2 sobre CFDI 3.3 y 4.0."
+    }
+  ],
+  "source_sat": "https://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd"
+}

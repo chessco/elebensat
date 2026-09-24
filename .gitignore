@@ -1,0 +1,59 @@
+# ==============================================================================
+# ELEBENSAT - Reglas de Exclusión de Git (.gitignore)
+# ==============================================================================
+
+# Entorno y Secretos
+.env
+.env.*
+!.env.example
+docker/config_ohlala/database.php
+!docker/config_ohlala/database.php.example
+
+# Certificados Digitales y Llaves Privadas (SAT / CSD / e.firma)
+*.cer
+*.key
+*.pfx
+*.p12
+*.pem
+*.crt
+
+# Archivos de Depuración, Logs y Cargas Masivas
+logs/
+*.log
+*.zip
+*.tar
+*.gz
+*.7z
+
+# Respaldos y Archivos Temporales de Edición
+*.bak
+*.bak*
+*.backup
+*.old
+*~
+*.swp
+*.tmp
+
+# Almacenamiento Local de Datos y Descargas Temporales
+data/
+storage/
+tmp/
+
+# Herramientas de IA, Asistentes y Configuración Local
+.agents/
+.gemini/
+
+# Entornos de Desarrollo (IDE)
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Sistema Operativo (Windows / macOS)
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+._*

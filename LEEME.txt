@@ -1,0 +1,28 @@
+SGKSAT / Visor XML Pro - Parche Metadata Manual
+Fecha: 2026-09-04
+
+Copiar conservando carpetas:
+  modulos/solicitudes_sat.php
+  ajax/metadata_manual_iniciar.php
+  ajax/metadata_manual_procesar.php
+  ajax/metadata_manual_cancelar.php
+  includes/metadata_manual.php
+
+Función:
+- Nuevo botón "Procesar metadata" en Solicitudes SAT.
+- Recibe TXT del SAT ya desempacado.
+- Valida encabezado y RFC contra la empresa activa.
+- Procesa por bloques de 500 registros para no congelar PHP.
+- Muestra progreso por bytes y contadores.
+- Permite cancelación segura al terminar el bloque actual.
+- Estatus 0 / FechaCancelacion => Cancelado.
+- Estatus 1 => Vigente, sin revivir un CFDI que ya está marcado Cancelado.
+- Actualiza facturas por id_empresa + UUID.
+- Inserta/actualiza sat_metadata_cfdi.
+- Registra faltantes en cfdi_faltantes_sat.
+- Genera notificación de cancelación cuando corresponde.
+- Guarda archivos/progreso fuera de htdocs en C:/SGKSAT/metadata_manual/empresa_<id>/
+  (o bajo SGKSAT_BASE_DIR si está configurado).
+
+No requiere SQL adicional para esta función si ya existen las tablas de metadata
+que usa SGKSAT (sat_metadata_cfdi, cfdi_faltantes_sat y notificaciones_sat).

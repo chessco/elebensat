@@ -1,0 +1,207 @@
+{
+  "version": "2026-08-28.1",
+  "rfc_emisor": "MGU840223U79",
+  "nota": "Correspondencias por Clave exacta observadas en 614 XML legibles del pago 2026-07-04. No equivalen a validación contable de acumulados o de otros tipos de nómina.",
+  "conceptos": {
+    "P002": {
+      "grupo": "Percepcion",
+      "tipo": "001",
+      "concepto": "Sueldos"
+    },
+    "P006": {
+      "grupo": "Percepcion",
+      "tipo": "001",
+      "concepto": "Septimo dia"
+    },
+    "P016": {
+      "grupo": "Percepcion",
+      "tipo": "019",
+      "concepto": "Horas extras dobles"
+    },
+    "P028": {
+      "grupo": "Percepcion",
+      "tipo": "054",
+      "concepto": "Descanso trabajado"
+    },
+    "P029": {
+      "grupo": "Percepcion",
+      "tipo": "020",
+      "concepto": "Prima dominical"
+    },
+    "P032": {
+      "grupo": "Percepcion",
+      "tipo": "038",
+      "concepto": "Gratificacion por  productividad"
+    },
+    "P063": {
+      "grupo": "Percepcion",
+      "tipo": "005",
+      "concepto": "Fondo de Ahorro Empresa"
+    },
+    "D006": {
+      "grupo": "Deduccion",
+      "tipo": "004",
+      "concepto": "Fondo de ahorro"
+    },
+    "D009": {
+      "grupo": "Deduccion",
+      "tipo": "019",
+      "concepto": "Cuota sindical"
+    },
+    "D016": {
+      "grupo": "Deduccion",
+      "tipo": "002",
+      "concepto": "ISR"
+    },
+    "D020": {
+      "grupo": "Deduccion",
+      "tipo": "001",
+      "concepto": "Cuota obrera IMSS"
+    },
+    "D041": {
+      "grupo": "Deduccion",
+      "tipo": "004",
+      "concepto": "Fondo de Ahorro Empresa"
+    },
+    "D042": {
+      "grupo": "Deduccion",
+      "tipo": "004",
+      "concepto": "Prima de seguro de gastos de Vida"
+    },
+    "I017": {
+      "grupo": "OtroPago",
+      "tipo": "002",
+      "concepto": "Subsidio para el empleo efectivamente entregado al trabajador"
+    },
+    "D010": {
+      "grupo": "Deduccion",
+      "tipo": "011",
+      "concepto": "Prestamo FONACOT"
+    },
+    "D015": {
+      "grupo": "Deduccion",
+      "tipo": "004",
+      "concepto": "Prestamo empresa"
+    },
+    "P007": {
+      "grupo": "Percepcion",
+      "tipo": "001",
+      "concepto": "Vacaciones disfrutadas"
+    },
+    "D029": {
+      "grupo": "Deduccion",
+      "tipo": "004",
+      "concepto": "Seguro de gastos medicos mayores"
+    },
+    "D011": {
+      "grupo": "Deduccion",
+      "tipo": "010",
+      "concepto": "Prestamo INFONAVIT"
+    },
+    "P060": {
+      "grupo": "Percepcion",
+      "tipo": "038",
+      "concepto": "Gratificacion"
+    },
+    "P026": {
+      "grupo": "Percepcion",
+      "tipo": "028",
+      "concepto": "Comisiones"
+    },
+    "P066": {
+      "grupo": "Percepcion",
+      "tipo": "028",
+      "concepto": "Comision"
+    },
+    "D019": {
+      "grupo": "OtroPago",
+      "tipo": "002",
+      "concepto": "Subsidio para el empleo efectivamente entregado al trabajador"
+    },
+    "P010": {
+      "grupo": "Percepcion",
+      "tipo": "001",
+      "concepto": "Permiso con goce"
+    },
+    "P012": {
+      "grupo": "Percepcion",
+      "tipo": "021",
+      "concepto": "Prima vacacional"
+    },
+    "P065": {
+      "grupo": "OtroPago",
+      "tipo": "999",
+      "concepto": "Prestamo Empresa"
+    },
+    "D028": {
+      "grupo": "Deduccion",
+      "tipo": "006",
+      "concepto": "Incapacidad enfermedad general"
+    },
+    "D001": {
+      "grupo": "Deduccion",
+      "tipo": "020",
+      "concepto": "Faltas injustificadas"
+    },
+    "D003": {
+      "grupo": "Deduccion",
+      "tipo": "020",
+      "concepto": "Permisos sin goce"
+    },
+    "D002": {
+      "grupo": "Deduccion",
+      "tipo": "020",
+      "concepto": "Faltas justificadas"
+    },
+    "D005": {
+      "grupo": "Deduccion",
+      "tipo": "006",
+      "concepto": "Incapacidad riesgo de trabajo"
+    },
+    "T041": {
+      "grupo": "Percepcion",
+      "tipo": "025",
+      "concepto": "Indemnización 3 meses timbrado"
+    },
+    "T043": {
+      "grupo": "Percepcion",
+      "tipo": "022",
+      "concepto": "Prima de antigüedad timbrado"
+    },
+    "D027": {
+      "grupo": "Deduccion",
+      "tipo": "006",
+      "concepto": "Incapacidad maternidad"
+    },
+    "P009": {
+      "grupo": "Percepcion",
+      "tipo": "001",
+      "concepto": "Vacaciones proporcionales"
+    },
+    "P013": {
+      "grupo": "Percepcion",
+      "tipo": "021",
+      "concepto": "Prima vacacional proporcional"
+    },
+    "P015": {
+      "grupo": "Percepcion",
+      "tipo": "002",
+      "concepto": "Aguinaldo proporcional"
+    },
+    "P068": {
+      "grupo": "Percepcion",
+      "tipo": "011",
+      "concepto": "Prima de Seguros de Vida patron"
+    },
+    "D040": {
+      "grupo": "Deduccion",
+      "tipo": "004",
+      "concepto": "Abono Prestamo"
+    },
+    "D044": {
+      "grupo": "Deduccion",
+      "tipo": "004",
+      "concepto": "Prima de Seguros de Vida patron"
+    }
+  }
+}

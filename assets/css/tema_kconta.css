@@ -1,0 +1,430 @@
+:root {
+  --k-primary: #154b70;
+  --k-primary-2: #1f678f;
+  --k-accent: #1688b5;
+  --k-bg: #eef3f7;
+  --k-surface: #ffffff;
+  --k-surface-2: #f7fafc;
+  --k-header: #e5f0f6;
+  --k-border: #cddae3;
+  --k-text: #172b3a;
+  --k-muted: #607584;
+  --k-hover: #e8f4fb;
+  --k-selected: #d7ecf8;
+  --k-danger: #c0394b;
+  --k-success: #21875b;
+  --k-warning: #d69516;
+}
+
+html, body { min-height: 100%; }
+body {
+  background: var(--k-bg) !important;
+  color: var(--k-text) !important;
+  font-family: "Segoe UI", Arial, sans-serif !important;
+}
+
+/* Cabecera y navegación */
+.navbar-custom {
+  background: linear-gradient(90deg, #123f61, #19577e) !important;
+  border: 0 !important;
+  box-shadow: 0 2px 8px rgba(17, 55, 80, .18);
+}
+.navbar-custom .fw-bold, .navbar-custom .usuario-activo,
+.navbar-custom .text-azul { color: #fff !important; }
+.navbar-custom .usuario-activo { opacity: .9; }
+.empresa-activa {
+  background: rgba(255,255,255,.13) !important;
+  border-color: rgba(255,255,255,.45) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+.empresa-activa .etiqueta { color: #cbeaff !important; }
+.navbar-buttons {
+  background: #fff !important;
+  border-bottom: 1px solid var(--k-border) !important;
+  box-shadow: 0 2px 6px rgba(35, 69, 91, .08);
+}
+.btn-nav {
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 3px solid transparent !important;
+  color: #294557 !important;
+  border-radius: 0 !important;
+  font-weight: 600;
+}
+.btn-nav:hover { background: #edf6fb !important; color: var(--k-primary-2) !important; }
+.btn-nav.active {
+  background: #eef8fc !important;
+  border-bottom-color: #1c91bd !important;
+  color: #0c6c96 !important;
+}
+.btn-nav.text-warning { color: #9a6800 !important; }
+.dropdown-menu, .dropdown-menu-dark {
+  background: #fff !important;
+  border: 1px solid var(--k-border) !important;
+  box-shadow: 0 8px 24px rgba(29, 60, 79, .18) !important;
+}
+.dropdown-menu .dropdown-item, .dropdown-menu-dark .dropdown-item { color: var(--k-text) !important; }
+.dropdown-menu .dropdown-item:hover { background: var(--k-hover) !important; color: var(--k-primary) !important; }
+#contenido-dinamico { background: var(--k-bg) !important; }
+
+/* Superficies */
+.card, .sat-panel, .sat-filtros, .modal-content,
+.bg-dark, .bg-card, .list-group-item.bg-dark {
+  background: var(--k-surface) !important;
+  color: var(--k-text) !important;
+  border-color: var(--k-border) !important;
+}
+.card, .sat-panel, .modal-content {
+  box-shadow: 0 3px 12px rgba(34, 70, 92, .09) !important;
+}
+.card-header, .card-footer, .modal-header, .modal-footer {
+  background: var(--k-surface-2) !important;
+  color: var(--k-text) !important;
+  border-color: var(--k-border) !important;
+}
+.text-white { color: var(--k-text) !important; }
+.text-info, .text-azul { color: #0a789f !important; }
+.text-secondary, .text-muted, .label-min, .sat-filtros .form-label { color: var(--k-muted) !important; }
+.border-secondary { border-color: var(--k-border) !important; }
+
+/* Formularios */
+.form-control, .form-select, .input-group-text, .form-control-min,
+.sat-filtros .form-control, .sat-filtros .form-select {
+  background-color: #fff !important;
+  color: var(--k-text) !important;
+  border-color: #bdccd6 !important;
+}
+.form-control:focus, .form-select:focus, .form-control-min:focus {
+  border-color: #2c96be !important;
+  box-shadow: 0 0 0 .2rem rgba(44,150,190,.15) !important;
+}
+.form-control::placeholder { color: #91a0aa !important; }
+.input-group-text { background: #edf5f9 !important; color: #176b91 !important; font-weight: 600; }
+.form-check-input { border-color: #9db0bd !important; }
+.preview-logo, .vigencia-box {
+  background: #f6fafc !important;
+  border-color: var(--k-border) !important;
+  color: #176b91 !important;
+}
+.nav-tabs { border-color: var(--k-border) !important; }
+.nav-tabs .nav-link { color: var(--k-muted) !important; }
+.nav-tabs .nav-link.active {
+  background: #fff !important;
+  color: #087ca6 !important;
+  border-bottom-color: #168fba !important;
+}
+
+/* Botones */
+.btn-primary { background: #176b94 !important; border-color: #176b94 !important; }
+.btn-primary:hover { background: #10597c !important; border-color: #10597c !important; }
+.btn-info { background: #168eb8 !important; border-color: #168eb8 !important; color: #fff !important; }
+.btn-success { background: var(--k-success) !important; border-color: var(--k-success) !important; }
+.btn-warning { background: #e8a91b !important; border-color: #e8a91b !important; color: #172b3a !important; }
+.btn-secondary { background: #6c8290 !important; border-color: #6c8290 !important; }
+.btn-outline-danger { color: #fff !important; border-color: rgba(255,255,255,.65) !important; }
+.btn-outline-danger:hover { background: var(--k-danger) !important; border-color: var(--k-danger) !important; }
+
+/* Tablas y DataTables */
+.table, .table-dark {
+  --bs-table-bg: #fff !important;
+  --bs-table-color: var(--k-text) !important;
+  --bs-table-border-color: #d6e1e8 !important;
+  --bs-table-striped-bg: #f6f9fb !important;
+  --bs-table-striped-color: var(--k-text) !important;
+  --bs-table-hover-bg: var(--k-hover) !important;
+  --bs-table-hover-color: var(--k-text) !important;
+  color: var(--k-text) !important;
+  border-color: #d6e1e8 !important;
+}
+.table > :not(caption) > * > * { background-color: inherit !important; color: inherit !important; border-color: #d6e1e8 !important; }
+.table thead th, table.dataTable thead th,
+#tablaFacturas thead th, #tablaSolicitudesSat thead th, #tablaDIOT thead th {
+  background: var(--k-header) !important;
+  color: #153f5c !important;
+  border-color: #bdd0dc !important;
+  font-weight: 700 !important;
+}
+.table tbody td, #tablaFacturas tbody td, #tablaSolicitudesSat tbody td, #tablaDIOT tbody td {
+  background: #fff !important;
+  color: var(--k-text) !important;
+  border-color: #d6e1e8 !important;
+}
+.table-striped > tbody > tr:nth-of-type(odd) > * { background: #f7fafc !important; }
+.table-hover > tbody > tr:hover > * { background: var(--k-hover) !important; }
+table.dataTable tbody tr.selected > *, table.dataTable tbody tr.active > *,
+.table tbody tr.table-active > * { background: var(--k-selected) !important; color: #113e59 !important; }
+.table tfoot td, .table tfoot th, #tablaFacturas tfoot td, #tablaDIOT tfoot td {
+  background: #edf3f6 !important;
+  color: #173f58 !important;
+  border-top: 2px solid #b9ccd8 !important;
+}
+.dataTables_wrapper, .dataTables_info, .dataTables_length, .dataTables_filter { color: var(--k-text) !important; }
+div.dataTables_wrapper div.dataTables_length select,
+div.dataTables_wrapper div.dataTables_filter input {
+  background: #fff !important;
+  color: var(--k-text) !important;
+  border: 1px solid #bdccd6 !important;
+}
+.page-link {
+  background: #fff !important;
+  color: #176b94 !important;
+  border-color: #c8d6df !important;
+}
+.page-item.active .page-link { background: #167fac !important; border-color: #167fac !important; color: #fff !important; }
+.page-item.disabled .page-link { background: #f1f4f6 !important; color: #84939c !important; }
+.dataTables_scrollBody, .dataTables_scrollHead, .dataTables_scrollFoot { border-color: #c9d7e0 !important; }
+
+/* Listas, avisos y modales */
+.list-group-item { background: #fff !important; color: var(--k-text) !important; border-color: var(--k-border) !important; }
+.list-group-item:hover, .list-group-item.active { background: var(--k-hover) !important; color: var(--k-primary) !important; }
+.alert-dark { background: #e8f1f6 !important; color: var(--k-text) !important; border-color: #c7d8e2 !important; }
+.modal-backdrop.show { opacity: .38 !important; }
+.btn-close { filter: none !important; }
+
+/* Scroll */
+* { scrollbar-color: #9eb3c0 #eef3f6; scrollbar-width: thin; }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: #eef3f6; }
+::-webkit-scrollbar-thumb { background: #9eb3c0; border-radius: 8px; border: 2px solid #eef3f6; }
+
+/* ==========================================================
+   CAPA FINAL DE COMPATIBILIDAD
+   Sobrescribe los estilos oscuros heredados de los módulos
+   cargados dinámicamente dentro de #contenido-dinamico.
+   ========================================================== */
+#contenido-dinamico,
+#contenido-dinamico .container-fluid,
+#contenido-dinamico .animate__animated {
+  color: var(--k-text) !important;
+}
+
+#contenido-dinamico .bg-dark,
+#contenido-dinamico .bg-black,
+#contenido-dinamico .card,
+#contenido-dinamico .card.bg-dark,
+#contenido-dinamico .modal-content,
+#contenido-dinamico .modal-content.bg-dark,
+#contenido-dinamico .table-responsive,
+#contenido-dinamico .contenedor-tabla-principal,
+#contenido-dinamico .dataTables_wrapper,
+#contenido-dinamico .dataTables_scroll,
+#contenido-dinamico .dataTables_scrollBody,
+#contenido-dinamico .dataTables_scrollHead,
+#contenido-dinamico .dataTables_scrollFoot {
+  background: #fff !important;
+  background-color: #fff !important;
+  color: var(--k-text) !important;
+  border-color: var(--k-border) !important;
+}
+
+#contenido-dinamico .text-white,
+#contenido-dinamico .text-light,
+#contenido-dinamico .table-dark,
+#contenido-dinamico .table-dark td,
+#contenido-dinamico .table-dark th {
+  color: var(--k-text) !important;
+}
+
+/* Formularios y modales claros, incluso cuando los módulos traen !important */
+#contenido-dinamico input,
+#contenido-dinamico select,
+#contenido-dinamico textarea,
+#contenido-dinamico .form-control,
+#contenido-dinamico .form-select,
+#contenido-dinamico .form-control-min,
+#contenido-dinamico .input-group-text,
+#contenido-dinamico .modal input,
+#contenido-dinamico .modal select,
+#contenido-dinamico .modal textarea {
+  background: #fff !important;
+  background-color: #fff !important;
+  color: #172b3a !important;
+  border-color: #b9cad5 !important;
+}
+#contenido-dinamico input::placeholder,
+#contenido-dinamico textarea::placeholder,
+#contenido-dinamico .form-control::placeholder {
+  color: #8798a5 !important;
+  opacity: 1 !important;
+}
+#contenido-dinamico input:disabled,
+#contenido-dinamico select:disabled,
+#contenido-dinamico textarea:disabled,
+#contenido-dinamico input[readonly],
+#contenido-dinamico textarea[readonly] {
+  background: #eef3f6 !important;
+  color: #536a79 !important;
+}
+#contenido-dinamico .form-control:focus,
+#contenido-dinamico .form-select:focus,
+#contenido-dinamico .form-control-min:focus {
+  background: #fff !important;
+  color: #172b3a !important;
+  border-color: #198db9 !important;
+  box-shadow: 0 0 0 .18rem rgba(25,141,185,.14) !important;
+}
+#contenido-dinamico .label-min,
+#contenido-dinamico label,
+#contenido-dinamico .form-label {
+  color: #526a79 !important;
+}
+#contenido-dinamico .input-group-text {
+  background: #edf5f9 !important;
+  color: #126b91 !important;
+  font-weight: 700 !important;
+}
+
+/* Modales tipo KConta */
+#contenido-dinamico .modal-content {
+  border: 1px solid #c8d7e0 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 18px 55px rgba(20,54,75,.24) !important;
+  overflow: hidden;
+}
+#contenido-dinamico .modal-header,
+#contenido-dinamico .modal-footer {
+  background: #f8fafc !important;
+  border-color: #d4e0e7 !important;
+}
+#contenido-dinamico .modal-body {
+  background: #fff !important;
+  color: var(--k-text) !important;
+}
+#contenido-dinamico .modal-title,
+#contenido-dinamico .modal-header b,
+#contenido-dinamico .modal-header strong {
+  color: #0d6f98 !important;
+}
+#contenido-dinamico .btn-close,
+#contenido-dinamico .btn-close-white {
+  filter: none !important;
+  opacity: .7 !important;
+}
+#contenido-dinamico .nav-tabs .nav-link {
+  background: transparent !important;
+  color: #647988 !important;
+  border: 0 !important;
+  border-bottom: 3px solid transparent !important;
+}
+#contenido-dinamico .nav-tabs .nav-link.active {
+  background: #eef6fa !important;
+  color: #0c6f99 !important;
+  border-bottom-color: #168fba !important;
+}
+#contenido-dinamico .vigencia-box,
+#contenido-dinamico .preview-logo {
+  background: #f4f8fb !important;
+  color: #176b91 !important;
+  border-color: #bfd0da !important;
+}
+
+/* DataTables claros y legibles, incluidos FixedColumns */
+#contenido-dinamico table.dataTable,
+#contenido-dinamico table.dataTable.table-dark,
+#contenido-dinamico #tablaFacturas,
+#contenido-dinamico #tablaUsuarios,
+#contenido-dinamico #tablaEmpresas,
+#contenido-dinamico #tablaSolicitudesSat,
+#contenido-dinamico #tablaDIOT {
+  background: #fff !important;
+  color: var(--k-text) !important;
+}
+#contenido-dinamico table.dataTable thead th,
+#contenido-dinamico table.dataTable tfoot th,
+#contenido-dinamico #tablaFacturas thead th,
+#contenido-dinamico #tablaFacturas tfoot th,
+#contenido-dinamico #tablaUsuarios thead th,
+#contenido-dinamico #tablaEmpresas thead th,
+#contenido-dinamico #tablaSolicitudesSat thead th,
+#contenido-dinamico #tablaDIOT thead th {
+  background: #e6f1f7 !important;
+  background-color: #e6f1f7 !important;
+  color: #153f5c !important;
+  border-color: #bfd0dc !important;
+}
+#contenido-dinamico table.dataTable tbody tr,
+#contenido-dinamico table.dataTable tbody td,
+#contenido-dinamico #tablaFacturas tbody tr,
+#contenido-dinamico #tablaFacturas tbody td,
+#contenido-dinamico #tablaUsuarios tbody tr,
+#contenido-dinamico #tablaUsuarios tbody td,
+#contenido-dinamico #tablaEmpresas tbody tr,
+#contenido-dinamico #tablaEmpresas tbody td,
+#contenido-dinamico #tablaSolicitudesSat tbody tr,
+#contenido-dinamico #tablaSolicitudesSat tbody td,
+#contenido-dinamico #tablaDIOT tbody tr,
+#contenido-dinamico #tablaDIOT tbody td,
+#contenido-dinamico .dtfc-fixed-left,
+#contenido-dinamico .dtfc-fixed-right {
+  background: #fff !important;
+  background-color: #fff !important;
+  color: #173247 !important;
+  border-color: #d5e0e7 !important;
+}
+#contenido-dinamico table.dataTable tbody tr:nth-child(even) td,
+#contenido-dinamico #tablaFacturas tbody tr:nth-child(even) td,
+#contenido-dinamico #tablaUsuarios tbody tr:nth-child(even) td,
+#contenido-dinamico #tablaEmpresas tbody tr:nth-child(even) td,
+#contenido-dinamico #tablaSolicitudesSat tbody tr:nth-child(even) td,
+#contenido-dinamico #tablaDIOT tbody tr:nth-child(even) td {
+  background: #f7fafc !important;
+}
+#contenido-dinamico table.dataTable.table-hover tbody tr:hover td,
+#contenido-dinamico #tablaFacturas.table-hover tbody tr:hover td,
+#contenido-dinamico #tablaUsuarios.table-hover tbody tr:hover td,
+#contenido-dinamico #tablaEmpresas.table-hover tbody tr:hover td,
+#contenido-dinamico #tablaSolicitudesSat.table-hover tbody tr:hover td,
+#contenido-dinamico #tablaDIOT.table-hover tbody tr:hover td {
+  background: #e5f3fb !important;
+  color: #123e59 !important;
+  cursor: pointer;
+}
+#contenido-dinamico table.dataTable tbody tr.selected td,
+#contenido-dinamico table.dataTable tbody tr.active td,
+#contenido-dinamico table.dataTable tbody tr.table-active td,
+#contenido-dinamico #tablaFacturas tbody tr.selected td,
+#contenido-dinamico #tablaFacturas tbody tr.table-active td {
+  background: #d5ebf8 !important;
+  color: #0f3d59 !important;
+}
+#contenido-dinamico table.dataTable tfoot td,
+#contenido-dinamico #tablaFacturas tfoot td,
+#contenido-dinamico #tablaDIOT tfoot td {
+  background: #edf3f7 !important;
+  color: #173f58 !important;
+  border-color: #bfd0dc !important;
+}
+#contenido-dinamico .dataTables_filter,
+#contenido-dinamico .dataTables_length,
+#contenido-dinamico .dataTables_info,
+#contenido-dinamico .dataTables_paginate {
+  color: #3d596b !important;
+}
+#contenido-dinamico .dataTables_filter input,
+#contenido-dinamico .dataTables_length select {
+  background: #fff !important;
+  color: #173247 !important;
+  border: 1px solid #b9cad5 !important;
+}
+#contenido-dinamico .dtfc-fixed-left {
+  border-right: 2px solid #9fc2d5 !important;
+}
+
+/* Panel de carga XML y bitácoras */
+#contenido-dinamico #log_carga {
+  background: #f5f8fa !important;
+  color: #223f52 !important;
+  border: 1px solid #b9d7c7 !important;
+}
+
+/* Los botones con texto oscuro heredado deben conservar contraste */
+#contenido-dinamico .btn-info,
+#contenido-dinamico .btn-primary,
+#contenido-dinamico .btn-success,
+#contenido-dinamico .btn-secondary {
+  color: #fff !important;
+}
+#contenido-dinamico .btn-warning {
+  color: #263746 !important;
+}

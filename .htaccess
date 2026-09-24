@@ -1,0 +1,12 @@
+# Endurecimiento básico del portal Visor XML / SGKSAT
+Options -Indexes
+
+# Evita descargar por URL archivos de soporte y configuración que no deben ser públicos.
+<FilesMatch "\.(sql|log|ini|env|bak|backup|old|zip|yml|yaml|toml|conf|config)$">
+    Require all denied
+</FilesMatch>
+
+# Evita publicar archivos ocultos de configuración/versionado.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>

@@ -1,0 +1,14 @@
+.git
+.gitignore
+.dockerignore
+.agents
+.gemini
+*.bak*
+*.log
+*.zip
+logs/oracle_exp_debug*
+tests/
+docker/config_ohlala/database.php
+.env
+.env.*
+!.env.example

@@ -1,0 +1,50 @@
+PARCHE - VALIDACIONES SAT CON PERMISOS POR USUARIO/EMPRESA
+===========================================================
+
+1) HACER RESPALDO de archivos y base de datos.
+
+2) EJECUTAR PRIMERO:
+   sql/migracion_permisos_validaciones_sat_20260821.sql
+
+   El SQL agrega 6 permisos nuevos a usuario_empresa_documentos:
+   - consulta_cruce_metadata
+   - consulta_codigos_postales
+   - consulta_sat_69
+   - consulta_alertas_69
+   - consulta_sat_69b
+   - consulta_alertas_69b
+
+   También deja habilitadas las 6 opciones para los SuperAdmin ya existentes.
+
+3) COPIAR las carpetas/archivos del ZIP sobre el proyecto, respetando rutas.
+   El ZIP contiene SOLAMENTE archivos modificados + este instructivo.
+
+4) Entrar como SuperAdmin a:
+   ADMINISTRACIÓN > ASIGNACIONES
+
+   Aparecerá un tercer bloque:
+   CONSULTAS Y VALIDACIONES SAT
+
+   con:
+   - Cruce Metadata / CFDI
+   - Códigos postales
+   - Artículo 69
+   - Riesgos 69
+   - Artículo 69-B
+   - Alertas 69-B
+
+5) Asignar las opciones deseadas a cada usuario/empresa y GUARDAR CAMBIOS.
+
+6) Los usuarios normales verán un nuevo menú:
+   VALIDACIONES SAT
+   Solo aparecerán dentro las opciones que tengan autorizadas.
+
+7) ADMINISTRACIÓN queda solo para SuperAdmin con:
+   - Empresas
+   - Usuarios
+   - Zonas
+   - Sincronizar correos CONTPAQ
+   - Asignaciones
+
+NOTA:
+Los permisos se validan también en los módulos y endpoints AJAX; no es solo ocultar/mostrar el menú.

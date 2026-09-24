@@ -1,0 +1,450 @@
+[
+  {
+    "encabezado": "Id Empleado",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "Nombre",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "apellido Pat",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "apellido Mat",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "RFC",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "CURP",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "No Seguro Social",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "AÑO",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "Registro Patronal",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "Tipo Nomina Asignada",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "Tipo Nomina Procesado",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "Planta",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "Posicion",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "Centro de Utilidad",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "Centro de Costos",
+    "tipo": "TEXTO"
+  },
+  {
+    "encabezado": "D001 - Faltas injustificadas",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D002 - Faltas justificadas",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D003 - Permisos sin goce",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D004 - Suspensiones",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D005 - Incapacidad riesgo de trabajo",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D006 - Fondo de ahorro",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D009 - Cuota sindical",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D010 - Préstamo FONACOT",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D011 - Préstamo INFONAVIT",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D015 - Préstamo empresa",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D016 - ISR",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D018 - ISR pagos por separación",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D019 - Subsidio al empleo",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D020 - Cuota obrera IMSS",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D027 - Incapacidad maternidad",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D028 - Incapacidad enfermedad general",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D029 - Seguro de gastos médicos mayores",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D040 - Abono Prestamo",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D041 - Fondo de Ahorro Empresa",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D042 - Prima de seguro de gastos de Vida",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D043 - Gastos Médicos Mayores Patrón.",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D044 - Prima de Seguros de Vida patrón",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D046 - Ajuste al Subsidio Causado",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D048 - Ajuste en ISR",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "D051 - Ajuste en viaticos entregados al trabajador",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I001 - Provisión de vacaciones",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I002 - Provisión de prima vacacional",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I003 - Provisión de aguinaldo",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I005 - Provisión de impuesto estatal",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I006 - Cuota patronal IMSS",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I007 - Cuota patronal aportación INFONAVIT",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I008 - Exento ISR prima vacacional",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I009 - Exento ISR aguinaldo",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I010 - Exento ISR horas extras dobles",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I012 - Exento ISR prima dominical",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I013 - Exento ISR pagos por separación",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I017 - Subsidio al empleo aplicado",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I018 - Cuota obrera IMSS cesantía y vejez",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I019 - Cuota obrera IMSS enfermedad y maternidad dinero",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I020 - Cuota obrera IMSS enfermedad y maternidad especie",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I021 - Cuota obrera IMSS invalidez y vida",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I022 - Cuota obrera IMSS pensionados",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I023 - Cuota patronal IMSS cesantía y vejez",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I024 - Cuota patronal IMSS guarderías",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I025 - Cuota patronal IMSS invalidez y vida",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I026 - Cuota patronal IMSS enfermedad y maternidad dinero",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I027 - Cuota patronal IMSS enfermedad y maternidad esp I",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I028 - Cuota patronal IMSS enfermedad y maternidad esp II",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I029 - Cuota patronal IMSS pensionados",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I030 - Cuota patronal IMSS retiro",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I031 - Cuota patronal IMSS riesgo de trabajo",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I033 - Gravado ISR pagos por separación",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I034 - Días IMSS",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I035 - Días IMSS SAR",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I036 - Días IMSS ramas enfermedad y maternidad",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I038 - Cálculo LISR 113 (extraordinario)",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I039 - Dias Laborados",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I042 - Exento Descanso Trabajado",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I043 - Base Gravable Acumulada",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I046 - Cuota Obrera IMSS",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I047 - ISR Tabla",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "I049 - Subsidio al empleado Ultima Semana",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "ISR000 - Ajuste Subsidio Fin de Mes",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "NETO - Neto",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P002 - Sueldos",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P006 - Séptimo día",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P007 - Vacaciones disfrutadas",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P008 - Vacaciones pagadas",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P009 - Vacaciones proporcionales",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P010 - Permiso con goce",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P012 - Prima vacacional",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P013 - Prima vacacional proporcional",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P015 - Aguinaldo proporcional",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P016 - Horas extras dobles",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P026 - Comisiones",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P028 - Descanso trabajado",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P029 - Prima dominical",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P032 - Gratificación por  productividad",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P033 - Viáticos",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P040 - Gratificación Especial",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P041 - Indemnización 3 meses",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P043 - Prima de antigüedad",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P045 - Subsidio por incapacidad",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P047 - Otro pagos",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P060 - Gratificación",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P063 - Fondo de Ahorro Empresa",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P065 - Préstamo Empresa",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P066 - Comisión",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P067 - Gastos Médicos Mayores Patrón",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P068 - Prima de Seguros de Vida patrón.",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P070 - ISR Ajustado Por Subsidio",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P072 - Reembolso de descuentos Crédito de Vivienda",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "P074 - Viaticos entregados al trabajador",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "T041 - Indemnización 3 meses (timbrado)",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "T043 - Prima de antigüedad (timbrado)",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "TOTALDED - Total de deducciones",
+    "tipo": "NUMERO"
+  },
+  {
+    "encabezado": "TOTALPER - Total de percepciones",
+    "tipo": "NUMERO"
+  }
+]

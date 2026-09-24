@@ -1,0 +1,3 @@
+# Esta carpeta contiene únicamente cargadores internos PHP.
+# Apache no debe servirlos directamente por URL.
+Require all denied
