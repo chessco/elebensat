@@ -84,29 +84,26 @@ if (session_status() === PHP_SESSION_ACTIVE) {
         }
 
         .pitaya-logo-img {
-            max-height: 80px;
+            max-height: 120px;
             width: auto;
             display: block;
             margin: 0 auto 0.75rem auto;
-            filter: drop-shadow(0 4px 16px rgba(36, 167, 127, 0.25));
-            transition: transform 0.3s ease;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .pitaya-logo-img:hover {
-            transform: scale(1.03);
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
         }
 
-        .visor-logo { 
-            font-weight: 800; 
-            letter-spacing: -0.02em;
-            margin-bottom: 0.25rem;
-        }
-
-        .brand-gradient {
-            background: linear-gradient(135deg, var(--pitaya-green) 0%, var(--pitaya-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 1.55rem;
+        .brand-sub-title {
+            color: #FFFFFF;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.15rem;
         }
 
         .brand-subtitle-badge {
@@ -293,11 +290,9 @@ if (session_status() === PHP_SESSION_ACTIVE) {
             <div class="card card-login">
                 <div class="card-body p-4 p-md-5">
                     <div class="text-center mb-4">
-                        <img src="assets/img/pitayacode-logo.svg" alt="PitayaCode Logo" class="pitaya-logo-img">
-                        <h2 class="visor-logo">
-                            <span class="brand-gradient">PitayaCode</span>
-                        </h2>
-                        <span class="brand-subtitle-badge" id="subtitulo">Visor XML Pro • Acceso al Sistema</span>
+                        <img src="assets/img/pitayacode-logo-cropped.png" alt="PitayaCode Logo" class="pitaya-logo-img">
+                        <div class="brand-sub-title">Visor XML Pro</div>
+                        <span class="brand-subtitle-badge" id="subtitulo">Acceso al Sistema</span>
                     </div>
                     
                     <div id="step-1">
