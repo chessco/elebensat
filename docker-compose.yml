@@ -12,6 +12,7 @@ services:
       - elebensat_app
     networks:
       - elebensat_net
+      - pitaya_net
 
   elebensat_app:
     container_name: elebensat_app
@@ -63,6 +64,9 @@ networks:
   elebensat_net:
     name: elebensat_net
     driver: bridge
+  pitaya_net:
+    name: pitaya_net
+    external: true
 
 volumes:
   elebensat_storage:
