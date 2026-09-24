@@ -222,16 +222,28 @@ $t->category("6. Conexión a Base de Datos y Prevención SQLi");
 $dbConnected = false;
 $pdo = null;
 
-try {
-    // Si estamos dentro del contenedor o tenemos acceso a config/db.php
-    if (file_exists($baseDir . '/config/db.php')) {
+$configPath = getenv('SGKSAT_CONFIG_FILE');
+if (!is_string($configPath) || trim($configPath) === '') {
+    if (file_exists('/var/www/config_ohlala/database.php')) {
+        $configPath = '/var/www/config_ohlala/database.php';
+        putenv("SGKSAT_CONFIG_FILE={$configPath}");
+    } elseif (file_exists($baseDir . '/docker/config_ohlala/database.php')) {
+        $configPath = $baseDir . '/docker/config_ohlala/database.php';
+        putenv("SGKSAT_CONFIG_FILE={$configPath}");
+    } else {
+        $configPath = dirname($baseDir, 2) . '/config_ohlala/database.php';
+    }
+}
+
+if (is_file($configPath) && is_readable($configPath)) {
+    try {
         require_once $baseDir . '/config/db.php';
         if (isset($pdo) && $pdo instanceof PDO) {
             $dbConnected = true;
         }
+    } catch (Throwable $e) {
+        $dbConnected = false;
     }
-} catch (Throwable $e) {
-    $dbConnected = false;
 }
 
 if ($dbConnected) {

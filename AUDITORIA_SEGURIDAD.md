@@ -108,3 +108,41 @@ docker exec elebensat_app php /var/www/html/tests/suite_seguridad.php
    - Programar volcado automático (`mysqldump`) del contenedor `elebensat_db` hacia almacenamiento fuera del servidor.
 3. **Validación Pre-Despliegue:**
    - Correr `php tests/suite_seguridad.php` antes de cada `git push` a la rama `main`.
+
+---
+
+## 6. Controles de Validación Pre-Despliegue en GitHub Actions
+
+El flujo de trabajo [deploy-hetzner.yml](file:///.github/workflows/deploy-hetzner.yml) implementa un esquema de **Deployment Gates (Barreras de Despliegue)** de dos etapas:
+
+```mermaid
+flowchart LR
+    A[git push / PR] --> B[Job 1: test_and_audit]
+    subgraph GitHub Actions Runner
+        B --> C[Linter PHP: php -l]
+        C --> D[Cama de Pruebas: suite_seguridad.php]
+    end
+    D -->|PASS 100%| E[Job 2: deploy]
+    D -->|FAIL| F[BLOQUEO: Despliegue Abortado]
+    subgraph Hetzner Cloud Production
+        E --> G[SSH Git Pull & Docker Build]
+        G --> H[Smoke Test In-Vivo: suite_seguridad.php]
+        H --> I[Producción Actualizada OK]
+    end
+```
+
+### Puertas de Enlace y Criterios de Aceptación:
+
+1. **Gate 1: Análisis Estático de Sintaxis (`php -l`):**
+   - Recorre el 100% de los archivos `.php` del proyecto (excluyendo `vendor/`).
+   - Si un solo archivo contiene un error sintáctico (ej. parse error por tags o llaves no cerradas), el pipeline termina con código de salida `1` inmediatamente.
+2. **Gate 2: Cama de Pruebas de Seguridad (`php tests/suite_seguridad.php`):**
+   - Valida la exclusión estricta de secretos en `.gitignore`.
+   - Comprueba directivas PHP (`short_open_tag = Off`, cookies de sesión seguras).
+   - Valida criptografía BCRYPT y tokens CSRF.
+   - Realiza pruebas de inyección simuladas (XXE y SQLi).
+   - Si alguna aserción falla, el pipeline se aborta antes de abrir cualquier conexión SSH hacia Hetzner.
+3. **Gate 3: Verificación In-Vivo Post-Despliegue:**
+   - Una vez que los contenedores `elebensat_app` y `elebensat_web` levantan en Hetzner, el servidor ejecuta la suite directamente contra la base de datos real (`elebensat_db`).
+   - Confirma la existencia de las 78 tablas oficiales y la integridad de las sentencias preparadas en el entorno activo.
+

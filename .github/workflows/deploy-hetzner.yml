@@ -1,16 +1,44 @@
-name: Deploy to Hetzner
+name: CI/CD & Deploy to Hetzner
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  deploy:
-    name: Deploy to Hetzner Production
+  test_and_audit:
+    name: 🛡️ Pre-Deployment Security & Code Audit
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
+      - name: Setup PHP 8.2 Environment
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, curl, zip, pdo, pdo_mysql, simplexml, dom
+          ini-values: short_open_tag=Off, session.cookie_httponly=1, session.cookie_samesite=Lax, session.use_strict_mode=1, display_errors=Off
+
+      - name: 🔍 PHP Syntax Verification (php -l)
+        run: |
+          echo "Verificando sintaxis PHP en el 100% de los archivos del proyecto..."
+          find . -name "*.php" -not -path "./vendor/*" -exec php -l {} \; | grep -v "No syntax errors" && exit 1 || echo "✔ Todos los archivos PHP tienen sintaxis válida."
+
+      - name: 🧪 Run Automated Security & Logic Testbed
+        run: |
+          echo "Ejecutando suite de pruebas de seguridad y auditoría..."
+          php tests/suite_seguridad.php
+
+  deploy:
+    name: 🚀 Deploy to Hetzner Production
+    needs: test_and_audit
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.2.0
@@ -21,7 +49,7 @@ jobs:
           port: ${{ secrets.HETZNER_PORT || 22 }}
           script_stop: true
           script: |
-            echo "🚀 [1/5] Verificando repositorio en /opt/pitaya/elebensat..."
+            echo "🚀 [1/6] Verificando repositorio en /opt/pitaya/elebensat..."
             cd /opt/pitaya
             if [ ! -d "elebensat/.git" ]; then
               echo "📦 Repositorio no encontrado. Clonando por primera vez..."
@@ -43,18 +71,21 @@ jobs:
               cp docker/config_ohlala/database.php.example docker/config_ohlala/database.php
             fi
 
-            echo "🔨 [2/5] Compilando imágenes Docker de ELEBENSAT..."
+            echo "🔨 [2/6] Compilando imágenes Docker de ELEBENSAT..."
             docker compose build elebensat_app elebensat_web
 
-            echo "🔄 [3/5] Levantando stack independiente (elebensat_net)..."
+            echo "🔄 [3/6] Levantando stack independiente (elebensat_net)..."
             docker compose up -d
 
-            echo "🩺 [4/5] Verificando estado y salud HTTP..."
+            echo "🩺 [4/6] Verificando estado y salud HTTP..."
             docker compose ps
             sleep 3
             curl -I --fail http://127.0.0.1:8080/login.php || echo "⚠️ Advertencia en verificación HTTP local"
 
-            echo "🧹 [5/5] Limpiando imágenes huérfanas..."
+            echo "🧪 [5/6] Ejecutando cama de pruebas en vivo sobre producción..."
+            docker exec elebensat_app php /var/www/html/tests/suite_seguridad.php
+
+            echo "🧹 [6/6] Limpiando imágenes huérfanas..."
             docker image prune -f
 
             echo "✅ Despliegue de ELEBENSAT en Hetzner finalizado exitosamente."
