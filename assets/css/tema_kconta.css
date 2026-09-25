@@ -555,35 +555,52 @@ code, pre, .font-mono, td.uuid-col, td.monto-col, .badge-uuid {
   border-color: #444444 !important;
 }
 
-/* Encabezados de tablas: alto contraste y definición de columnas */
+/* Encabezados de tablas: alto contraste, legibilidad nítida y definición de columnas */
+.dataTables_scrollHead,
+.dataTables_scrollHeadInner {
+  background: #252827 !important;
+  border-bottom: 2px solid var(--pitaya-green, #24A77F) !important;
+}
+
 #tablaFacturas thead th, #tablaFacturas tfoot th,
-#tablaDetallePagos thead th, #tablaDetallePagos tfoot th {
-  background: #242424 !important;
-  background-color: #242424 !important;
-  color: #D6D6D6 !important;
+#tablaDetallePagos thead th, #tablaDetallePagos tfoot th,
+.dataTables_scrollHead thead th,
+.dataTables_scrollHeadInner thead th,
+#tablaSolicitudesSat thead th, #tablaDIOT thead th {
+  background: #252827 !important;
+  background-color: #252827 !important;
+  color: #EAEAEA !important;
   font-size: 0.72rem !important;
   font-weight: 700 !important;
-  border: 1px solid #383838 !important;
-  letter-spacing: 0.03em !important;
+  border: 1px solid #363c3a !important;
+  letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
   vertical-align: middle !important;
+  padding: 7px 8px !important;
+  line-height: 1.2 !important;
 }
 
 /* Celda de encabezado al pasar el ratón */
-#tablaFacturas thead th:hover {
-  background: #2a2a2a !important;
-  color: #FFFFFF !important;
+#tablaFacturas thead th:hover,
+#tablaDetallePagos thead th:hover,
+.dataTables_scrollHead thead th:hover {
+  background: #2d3330 !important;
+  color: var(--pitaya-green, #24A77F) !important;
+  cursor: pointer;
 }
 
 /* Filas alternadas suaves y seleccionadas */
-#tablaFacturas tbody tr:nth-child(even) td {
-  background: #1e1e1e !important;
+#tablaFacturas tbody tr:nth-child(even) td,
+#tablaDetallePagos tbody tr:nth-child(even) td {
+  background: #1e201f !important;
 }
-#tablaFacturas tbody tr:nth-child(odd) td {
-  background: #232323 !important;
+#tablaFacturas tbody tr:nth-child(odd) td,
+#tablaDetallePagos tbody tr:nth-child(odd) td {
+  background: #232625 !important;
 }
-#tablaFacturas tbody tr:hover td {
-  background: #2e3532 !important; /* sutil tinte verde en hover */
+#tablaFacturas tbody tr:hover td,
+#tablaDetallePagos tbody tr:hover td {
+  background: #293430 !important; /* sutil tinte verde en hover */
   color: #FFFFFF !important;
 }
 
@@ -644,16 +661,15 @@ code, pre, .font-mono, td.uuid-col, td.monto-col, .badge-uuid {
   border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
-.table thead th, table.dataTable thead th,
-#tablaFacturas thead th, #tablaSolicitudesSat thead th, #tablaDIOT thead th {
-  background: #1c1c1c !important;
-  background-color: #1c1c1c !important;
-  color: var(--pitaya-text-muted) !important;
-  font-size: 0.78rem !important;
+.table thead th, table.dataTable thead th {
+  background: #252827 !important;
+  background-color: #252827 !important;
+  color: #EAEAEA !important;
+  font-size: 0.76rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  padding: 12px 14px !important;
+  letter-spacing: 0.04em !important;
+  padding: 8px 10px !important;
   border-bottom: 2px solid rgba(255, 255, 255, 0.12) !important;
   vertical-align: middle !important;
 }

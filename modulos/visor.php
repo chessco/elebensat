@@ -58,18 +58,29 @@ if (is_readable($nominaGkJs)) {
     }
 
     #tablaFacturas thead th,
-    #tablaFacturas tfoot th {
-        background: #0d1117 !important;
-        color: #58a6ff;
-        font-size: 0.7rem;
-        border: 1px solid #30363d !important;
-        padding: 7px 8px;
+    #tablaFacturas tfoot th,
+    #tablaFacturas_wrapper .dataTables_scrollHead thead th,
+    #tablaFacturas_wrapper thead th {
+        background: #252827 !important;
+        background-color: #252827 !important;
+        color: #E6ECE9 !important;
+        font-size: 0.72rem !important;
+        font-weight: 700 !important;
+        border: 1px solid #363c3a !important;
+        padding: 7px 8px !important;
         text-align: left;
         vertical-align: middle;
         white-space: normal;
-        line-height: 1.15;
+        line-height: 1.2;
         z-index: 3;
+        letter-spacing: 0.03em;
         text-transform: uppercase;
+    }
+
+    #tablaFacturas thead th:hover,
+    #tablaFacturas_wrapper .dataTables_scrollHead thead th:hover {
+        background: #2d3330 !important;
+        color: var(--pitaya-green, #24A77F) !important;
     }
 
     /* Totales: columnas monetarias más anchas para evitar que los importes se encimen. */
@@ -84,12 +95,12 @@ if (is_readable($nominaGkJs)) {
     }
 
     #tablaFacturas tbody td {
-        background-color: #161b22 !important;
-        color: #c9d1d9;
+        background-color: #1e201f !important;
+        color: #d6ddd9;
         height: 18px !important;
         line-height: 18px !important;
-        border: 1px solid #30363d !important;
-        padding: 1px 8px !important;
+        border: 1px solid #2e3331 !important;
+        padding: 2px 8px !important;
         font-size: 0.76rem;
         white-space: nowrap;
         overflow: hidden;
@@ -109,31 +120,31 @@ if (is_readable($nominaGkJs)) {
     }
 
     #tablaFacturas_wrapper thead .dtfc-fixed-left,
-    #tablaFacturas_wrapper tfoot .dtfc-fixed-left {
-        background-color: #0d1117 !important;
-        color: #58a6ff !important;
+    #tablaFacturas_wrapper tfoot .dtfc-fixed-left,
+    #tablaFacturas_wrapper .dataTables_scrollHead thead .dtfc-fixed-left {
+        background-color: #252827 !important;
+        color: #E6ECE9 !important;
     }
 
     #tablaFacturas_wrapper tbody .dtfc-fixed-left {
-        background-color: #161b22 !important;
-        color: #c9d1d9 !important;
+        background-color: #1e201f !important;
+        color: #d6ddd9 !important;
     }
 
     #tablaFacturas_wrapper .dtfc-fixed-left:last-child {
-        border-right: 2px solid #58a6ff !important;
-        box-shadow: 2px 0 0 #58a6ff;
+        border-right: 2px solid #24A77F !important;
+        box-shadow: 2px 0 6px rgba(36, 167, 127, 0.25);
     }
-
 
     /* Fila seleccionada con un clic en el listado principal. */
     #tablaFacturas tbody tr.fila-seleccionada > td,
     #tablaFacturas_wrapper tbody tr.fila-seleccionada > td.dtfc-fixed-left {
-        background-color: #264f78 !important;
+        background-color: #1b3d33 !important;
         color: #ffffff !important;
     }
 
     #tablaFacturas tbody tr.fila-seleccionada > td:first-child {
-        box-shadow: inset 4px 0 0 #58a6ff;
+        box-shadow: inset 4px 0 0 #24A77F;
     }
 
     /* Checkbox PPD: selección visible en individual / seleccionar todos. */
@@ -196,17 +207,20 @@ if (is_readable($nominaGkJs)) {
     }
 
     #tablaFacturas thead th.text-derecha,
-    #tablaFacturas tfoot th.text-derecha {
+    #tablaFacturas tfoot th.text-derecha,
+    #tablaFacturas_wrapper .dataTables_scrollHead thead th.text-derecha {
         text-align: right !important;
     }
 
     #tablaFacturas thead th.text-centro,
-    #tablaFacturas tfoot th.text-centro {
+    #tablaFacturas tfoot th.text-centro,
+    #tablaFacturas_wrapper .dataTables_scrollHead thead th.text-centro {
         text-align: center !important;
     }
 
     #tablaFacturas thead th.text-izquierda,
-    #tablaFacturas tfoot th.text-izquierda {
+    #tablaFacturas tfoot th.text-izquierda,
+    #tablaFacturas_wrapper .dataTables_scrollHead thead th.text-izquierda {
         text-align: left !important;
     }
 
@@ -331,18 +345,41 @@ if (is_readable($nominaGkJs)) {
     .visor-selector-modo { margin-bottom: 0 !important; }
     #contenedorDetallePagos { display:none; }
     #tablaDetallePagos { table-layout:fixed !important; width:6500px !important; border-collapse:separate !important; border-spacing:0; }
-    #tablaDetallePagos thead th, #tablaDetallePagos tfoot th {
-        background:#0d1117 !important; color:#58a6ff; font-size:.68rem; border:1px solid #30363d !important;
-        padding:6px 7px; white-space:normal; line-height:1.15; text-transform:uppercase;
+    #tablaDetallePagos thead th, #tablaDetallePagos tfoot th,
+    #tablaDetallePagos_wrapper .dataTables_scrollHead thead th,
+    #tablaDetallePagos_wrapper thead th {
+        background: #252827 !important;
+        background-color: #252827 !important;
+        color: #E6ECE9 !important;
+        font-size: .68rem;
+        font-weight: 700;
+        border: 1px solid #363c3a !important;
+        padding: 6px 7px;
+        white-space: normal;
+        line-height: 1.15;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+    #tablaDetallePagos thead th:hover,
+    #tablaDetallePagos_wrapper .dataTables_scrollHead thead th:hover {
+        background: #2d3330 !important;
+        color: var(--pitaya-green, #24A77F) !important;
     }
     #tablaDetallePagos tbody td {
-        background:#161b22 !important; color:#c9d1d9; border:1px solid #30363d !important; padding:2px 7px !important;
-        font-size:.74rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+        background: #1e201f !important;
+        color: #d6ddd9;
+        border: 1px solid #2e3331 !important;
+        padding: 2px 7px !important;
+        font-size: .74rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
-    #tablaDetallePagos.table-hover tbody tr:hover td { background:#323b44 !important; color:#fff !important; }
-    #tablaDetallePagos_wrapper .dtfc-fixed-left { z-index:4 !important; }
-    #tablaDetallePagos_wrapper thead .dtfc-fixed-left, #tablaDetallePagos_wrapper tfoot .dtfc-fixed-left { background:#0d1117 !important; }
-    #tablaDetallePagos_wrapper tbody .dtfc-fixed-left { background:#161b22 !important; }
+    #tablaDetallePagos.table-hover tbody tr:hover td { background: #2a3330 !important; color: #fff !important; }
+    #tablaDetallePagos_wrapper .dtfc-fixed-left { z-index: 4 !important; }
+    #tablaDetallePagos_wrapper thead .dtfc-fixed-left, #tablaDetallePagos_wrapper tfoot .dtfc-fixed-left,
+    #tablaDetallePagos_wrapper .dataTables_scrollHead thead .dtfc-fixed-left { background: #252827 !important; color: #E6ECE9 !important; }
+    #tablaDetallePagos_wrapper tbody .dtfc-fixed-left { background: #1e201f !important; color: #d6ddd9 !important; }
 
 </style>
 
