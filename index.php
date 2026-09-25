@@ -30,24 +30,27 @@ if (session_status() === PHP_SESSION_ACTIVE) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         :root {
-            --pitaya-bg: #202020;
-            --pitaya-surface: #282828;
-            --pitaya-surface-elevated: #303030;
-            --pitaya-border: #383838;
+            --pitaya-bg: #121414;
+            --pitaya-surface: #202423;
+            --pitaya-surface-elevated: #282d2c;
+            --pitaya-surface-input: #151817;
+            --pitaya-border: rgba(255, 255, 255, 0.08);
+            --pitaya-border-input: #323837;
             --pitaya-green: #24A77F;
             --pitaya-green-hover: #1E8D6B;
             --pitaya-blue: #17A0C6;
             --pitaya-pink: #DA3C7A;
             --pitaya-text-primary: #FFFFFF;
-            --pitaya-text-secondary: #A0A0A0;
-            --pitaya-text-muted: #707070;
+            --pitaya-text-secondary: #9EABA7;
+            --pitaya-text-muted: #6C7774;
         }
 
         body { 
-            background: var(--pitaya-bg);
+            background-color: var(--pitaya-bg);
             min-height: 100vh; 
             display: flex; 
             align-items: center; 
+            justify-content: center;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
             position: relative;
@@ -55,16 +58,16 @@ if (session_status() === PHP_SESSION_ACTIVE) {
             color: var(--pitaya-text-primary);
         }
 
-        /* Ambient tech background glow */
+        /* Resplandor ambiental de marca centrado */
         body::before {
             content: '';
             position: absolute;
-            top: -20%;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(36, 167, 127, 0.09) 0%, rgba(23, 160, 198, 0.05) 40%, transparent 70%);
+            transform: translate(-50%, -50%);
+            width: 750px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(36, 167, 127, 0.12) 0%, rgba(23, 160, 198, 0.05) 45%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -74,67 +77,75 @@ if (session_status() === PHP_SESSION_ACTIVE) {
             z-index: 1;
         }
 
+        /* Tarjeta con relieve pronunciado y separación del fondo */
         .card-login { 
             border: 1px solid var(--pitaya-border); 
-            border-radius: 16px; 
+            border-radius: 18px; 
             background: var(--pitaya-surface);
-            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.04);
-            transition: all 0.4s ease;
-            backdrop-filter: blur(8px);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.04);
+            transition: all 0.35s ease;
+            backdrop-filter: blur(12px);
         }
 
+        /* Logo transparente integrado orgánicamente (sin caja ni parche) */
         .pitaya-logo-img {
-            max-height: 120px;
+            max-height: 85px;
             width: auto;
             display: block;
-            margin: 0 auto 0.75rem auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            margin: 0 auto 0.85rem auto;
+            filter: drop-shadow(0 6px 20px rgba(36, 167, 127, 0.22));
+            transition: transform 0.25s ease;
         }
 
         .pitaya-logo-img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+            transform: scale(1.03);
         }
 
-        .brand-sub-title {
-            color: #FFFFFF;
-            font-size: 1.25rem;
+        .product-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(36, 167, 127, 0.12);
+            color: var(--pitaya-green);
+            border: 1px solid rgba(36, 167, 127, 0.35);
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: -0.01em;
-            margin-bottom: 0.15rem;
+            letter-spacing: 0.08em;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 0.35rem;
         }
 
         .brand-subtitle-badge {
-            display: inline-block;
+            display: block;
             color: var(--pitaya-text-secondary);
             font-size: 0.82rem;
             font-weight: 500;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.01em;
         }
 
         .form-label {
             color: var(--pitaya-text-secondary);
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
             margin-bottom: 0.45rem;
         }
 
+        /* Inputs nítidos con bordes bien definidos */
         .form-control {
-            background-color: var(--pitaya-bg) !important;
-            border: 1px solid var(--pitaya-border) !important;
+            background-color: var(--pitaya-surface-input) !important;
+            border: 1px solid var(--pitaya-border-input) !important;
             color: var(--pitaya-text-primary) !important;
-            border-radius: 8px;
-            padding: 0.65rem 0.9rem;
+            border-radius: 9px;
+            padding: 0.7rem 0.95rem;
             font-size: 0.92rem;
             transition: all 0.2s ease;
         }
 
         .form-control:focus {
             border-color: var(--pitaya-green) !important;
-            box-shadow: 0 0 0 3px rgba(36, 167, 127, 0.2) !important;
+            box-shadow: 0 0 0 3px rgba(36, 167, 127, 0.22) !important;
             outline: none;
         }
 
@@ -143,41 +154,43 @@ if (session_status() === PHP_SESSION_ACTIVE) {
         }
 
         .input-group-text {
-            background-color: var(--pitaya-surface-elevated) !important;
-            border: 1px solid var(--pitaya-border) !important;
+            background-color: var(--pitaya-surface-input) !important;
+            border: 1px solid var(--pitaya-border-input) !important;
             border-right: none !important;
-            color: var(--pitaya-text-secondary);
-            border-radius: 8px 0 0 8px;
+            color: var(--pitaya-green);
+            border-radius: 9px 0 0 9px;
+            padding-left: 1rem;
+            padding-right: 0.75rem;
         }
 
         .input-group .form-control {
             border-left: none !important;
-            border-radius: 0 8px 8px 0;
+            border-radius: 0 9px 9px 0;
         }
 
+        /* Botón ACCEDER con gradiente de marca y relieve */
         .btn-primary { 
-            background-color: var(--pitaya-green) !important; 
-            border: 1px solid var(--pitaya-green) !important; 
-            padding: 12px; 
-            font-weight: 600; 
-            font-size: 0.92rem;
-            border-radius: 8px;
-            letter-spacing: 0.03em;
-            box-shadow: 0 4px 14px rgba(36, 167, 127, 0.28);
+            background: linear-gradient(135deg, var(--pitaya-green) 0%, #1A946D 100%) !important; 
+            border: none !important; 
+            padding: 0.78rem !important; 
+            font-weight: 700 !important; 
+            font-size: 0.92rem !important;
+            border-radius: 9px !important;
+            letter-spacing: 0.04em !important;
+            box-shadow: 0 4px 16px rgba(36, 167, 127, 0.32) !important;
             transition: all 0.2s ease;
         }
 
         .btn-primary:hover, .btn-primary:focus { 
-            background-color: var(--pitaya-green-hover) !important;
-            border-color: var(--pitaya-green-hover) !important;
-            box-shadow: 0 6px 18px rgba(36, 167, 127, 0.38);
+            opacity: 0.95;
+            box-shadow: 0 8px 24px rgba(36, 167, 127, 0.45) !important;
             transform: translateY(-1px);
         }
 
-        /* Empresa selection cards */
+        /* Selector de empresas del paso 2 */
         .empresa-card {
-            background: var(--pitaya-bg);
-            border: 1px solid var(--pitaya-border);
+            background: var(--pitaya-surface-input);
+            border: 1px solid var(--pitaya-border-input);
             border-radius: 12px;
             padding: 18px 14px;
             text-align: center;
@@ -194,7 +207,7 @@ if (session_status() === PHP_SESSION_ACTIVE) {
             border-color: var(--pitaya-green);
             background: var(--pitaya-surface-elevated);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35), 0 0 12px rgba(36, 167, 127, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 14px rgba(36, 167, 127, 0.22);
         }
 
         .empresa-icon {
@@ -240,9 +253,8 @@ if (session_status() === PHP_SESSION_ACTIVE) {
             padding: 5px;
         }
 
-        /* Scrollbar */
         #contenedor-empresas::-webkit-scrollbar { width: 5px; }
-        #contenedor-empresas::-webkit-scrollbar-track { background: var(--pitaya-bg); }
+        #contenedor-empresas::-webkit-scrollbar-track { background: var(--pitaya-surface-input); }
         #contenedor-empresas::-webkit-scrollbar-thumb { background: #484848; border-radius: 10px; }
         #contenedor-empresas::-webkit-scrollbar-thumb:hover { background: var(--pitaya-green); }
 
@@ -259,14 +271,14 @@ if (session_status() === PHP_SESSION_ACTIVE) {
         }
 
         .login-footer-info {
-            margin-top: 1.5rem;
+            margin-top: 1.75rem;
             padding-top: 1.2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             align-items: center;
             justify-content: space-between;
             color: var(--pitaya-text-muted);
-            font-size: 0.75rem;
+            font-size: 0.74rem;
         }
 
         .status-dot {
@@ -276,7 +288,7 @@ if (session_status() === PHP_SESSION_ACTIVE) {
             background-color: var(--pitaya-green);
             box-shadow: 0 0 6px var(--pitaya-green);
             display: inline-block;
-            margin-right: 5px;
+            margin-right: 6px;
         }
 
         #mensaje { min-height: 20px; font-weight: 500; }
@@ -286,13 +298,15 @@ if (session_status() === PHP_SESSION_ACTIVE) {
 
 <div class="container">
     <div class="row justify-content-center">
-        <div id="col-contenedor" class="col-md-4">
+        <div id="col-contenedor" class="col-md-5 col-lg-4">
             <div class="card card-login">
                 <div class="card-body p-4 p-md-5">
                     <div class="text-center mb-4">
-                        <img src="assets/img/pitayacode-logo-cropped.png" alt="PitayaCode Logo" class="pitaya-logo-img">
-                        <div class="brand-sub-title">Visor XML Pro</div>
-                        <span class="brand-subtitle-badge" id="subtitulo">Acceso al Sistema</span>
+                        <img src="assets/img/pitayacode-logo.png" alt="PitayaCode" class="pitaya-logo-img">
+                        <div class="product-badge">
+                            <i class="bi bi-shield-check me-1"></i> VISOR XML PRO
+                        </div>
+                        <span class="brand-subtitle-badge" id="subtitulo">Acceso a plataforma fiscal</span>
                     </div>
                     
                     <div id="step-1">
@@ -373,7 +387,7 @@ function validarUsuario() {
                 return;
             }
 
-            $('#col-contenedor').removeClass('col-md-4').addClass('col-md-6');
+            $('#col-contenedor').removeClass('col-md-5 col-lg-4').addClass('col-md-7 col-lg-6');
             $('#step-1').fadeOut(250, function(){
                 $('#subtitulo').text('Seleccione la empresa a gestionar');
                 let htmlEmpresas = '';
@@ -411,8 +425,8 @@ function entrarConEmpresa(id_emp) {
 
 function regresarLogin() {
     $('#step-2').fadeOut(250, function(){
-        $('#col-contenedor').removeClass('col-md-6').addClass('col-md-4');
-        $('#subtitulo').text('Visor XML Pro • Acceso al Sistema');
+        $('#col-contenedor').removeClass('col-md-7 col-lg-6').addClass('col-md-5 col-lg-4');
+        $('#subtitulo').text('Acceso a plataforma fiscal');
         $('#step-1').fadeIn(250);
     });
 }

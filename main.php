@@ -184,7 +184,7 @@ if (session_status() === PHP_SESSION_ACTIVE) {
     <div class="container-fluid d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <span class="brand-pitaya-title me-3">
-                <img src="assets/img/pitayacode-icon-cropped.png" alt="PitayaCode" style="height: 30px; width: auto; vertical-align: -5px; border-radius: 6px;" class="me-2">
+                <img src="assets/img/pitayacode-icon.png" alt="PitayaCode" style="height: 32px; width: auto; vertical-align: -6px;" class="me-2">
                 <span class="brand-accent">PitayaCode</span>
                 <span class="brand-sub">Visor XML Pro</span>
             </span>

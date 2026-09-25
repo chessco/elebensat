@@ -250,9 +250,13 @@
 <div class="login-container">
     <div class="login-card">
         <div class="text-center mb-4">
-            <img src="assets/img/pitayacode-logo-cropped.png" alt="PitayaCode" style="max-height: 110px; width: auto; margin-bottom: 0.6rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);">
-            <div style="color: #FFFFFF; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.15rem;">Visor XML Pro</div>
-            <p class="brand-subtitle" style="margin-bottom: 1.25rem;">Inteligencia Fiscal • Acceso</p>
+            <img src="assets/img/pitayacode-logo.png" alt="PitayaCode" style="max-height: 85px; width: auto; margin-bottom: 0.85rem; filter: drop-shadow(0 6px 20px rgba(36, 167, 127, 0.22));">
+            <div>
+                <div style="display: inline-flex; align-items: center; background: rgba(36, 167, 127, 0.12); color: var(--pitaya-green); border: 1px solid rgba(36, 167, 127, 0.35); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; padding: 4px 14px; border-radius: 20px; margin-bottom: 0.35rem;">
+                    <i class="bi bi-shield-check me-1"></i> VISOR XML PRO
+                </div>
+            </div>
+            <p class="brand-subtitle" style="margin-bottom: 1.25rem;">Acceso a plataforma fiscal</p>
         </div>
         
         <div id="step-1">
