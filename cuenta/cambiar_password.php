@@ -22,7 +22,10 @@ $token = csrf_token();
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cambiar contraseña - Visor XML</title>
+<title>Cambiar contraseña - PitayaCode Visor XML</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon.png">
+<link rel="icon" type="image/png" href="../assets/img/pitayacode-icon.png">
+<link rel="shortcut icon" href="../favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
