@@ -176,7 +176,7 @@ if (session_status() === PHP_SESSION_ACTIVE) {
             .usuario-activo { margin-left: 0; }
         }
     </style>
-    <link rel="stylesheet" href="assets/css/tema_kconta.css?v=pitayacode1">
+    <link rel="stylesheet" href="assets/css/tema_kconta.css?v=pitayacode2">
 </head>
 <body>
 
@@ -219,25 +219,25 @@ if (session_status() === PHP_SESSION_ACTIVE) {
         <?php if ($puedeGenerarDiot): ?><button class="btn-nav" data-module="diot_view" onclick="cargarModulo('diot_view')"><i class="bi bi-file-earmark-ruled"></i> GENERAR DIOT</button><?php endif; ?>
         <?php if ($puedeVerSolicitudesSat): ?><button class="btn-nav" data-module="solicitudes_sat" onclick="cargarModulo('solicitudes_sat')"><i class="bi bi-cloud-arrow-down"></i> SOLICITUDES SAT</button><?php endif; ?>
         <?php if ($puedeProcesarPagos): ?>
-        <button class="btn-nav text-warning border-warning" type="button" onclick="procesarPagos()">
+        <button class="btn-nav" type="button" onclick="procesarPagos()">
             <i class="bi bi-currency-dollar"></i> PROCESAR PAGOS
         </button>
         <?php endif; ?>
         <?php if ($puedeContpaqCheques): ?>
-        <button class="btn-nav text-info border-info" data-module="contpaq_cheques" type="button" onclick="cargarModulo('contpaq_cheques')">
+        <button class="btn-nav" data-module="contpaq_cheques" type="button" onclick="cargarModulo('contpaq_cheques')">
             <i class="bi bi-bank2"></i> CONTPAQ CHEQUES
         </button>
         <?php endif; ?>
         <?php if ($puedeOraclePagos): ?>
-        <button class="btn-nav text-danger border-danger" data-module="oracle_pagos" type="button" onclick="cargarModulo('oracle_pagos')">
+        <button class="btn-nav" data-module="oracle_pagos" type="button" onclick="cargarModulo('oracle_pagos')">
             <i class="bi bi-cloud-arrow-down"></i> ORACLE PAGOS
         </button>
-        <button class="btn-nav text-warning border-warning" data-module="oracle_iva_conciliacion" type="button" onclick="cargarModulo('oracle_iva_conciliacion')">
+        <button class="btn-nav" data-module="oracle_iva_conciliacion" type="button" onclick="cargarModulo('oracle_iva_conciliacion')">
             <i class="bi bi-intersect"></i> CONCILIAR IVA
         </button>
         <?php endif; ?>
         <?php if ($puedeNominaArchivo): ?>
-        <button class="btn-nav text-success border-success" data-module="nomina" type="button" onclick="cargarModulo('nomina')">
+        <button class="btn-nav" data-module="nomina" type="button" onclick="cargarModulo('nomina')">
             <i class="bi bi-people-fill"></i> NÓMINA
         </button>
         <?php endif; ?>
