@@ -176,7 +176,7 @@ if (session_status() === PHP_SESSION_ACTIVE) {
             .usuario-activo { margin-left: 0; }
         }
     </style>
-    <link rel="stylesheet" href="assets/css/tema_kconta.css?v=pitayacode2">
+    <link rel="stylesheet" href="assets/css/tema_kconta.css?v=<?= filemtime(__DIR__ . '/assets/css/tema_kconta.css') ?>">
 </head>
 <body>
 

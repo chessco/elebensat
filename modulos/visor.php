@@ -50,7 +50,12 @@ if (is_readable($nominaGkJs)) {
         border-radius: 6px;
     }
 
-    #tablaFacturas {
+    #tablaFacturas,
+    #tablaFacturas_wrapper .dataTables_scrollHead table,
+    #tablaFacturas_wrapper .dataTables_scrollHeadInner,
+    #tablaFacturas_wrapper .dataTables_scrollHeadInner table,
+    #tablaFacturas_wrapper .dataTables_scrollBody table,
+    #tablaFacturas_wrapper .dataTables_scrollFoot table {
         table-layout: fixed !important;
         width: 8720px !important;
         border-collapse: separate !important;
@@ -344,7 +349,17 @@ if (is_readable($nominaGkJs)) {
     .visor-selector-modo .btn { min-width: 150px; font-weight: 700; }
     .visor-selector-modo { margin-bottom: 0 !important; }
     #contenedorDetallePagos { display:none; }
-    #tablaDetallePagos { table-layout:fixed !important; width:6500px !important; border-collapse:separate !important; border-spacing:0; }
+    #tablaDetallePagos,
+    #tablaDetallePagos_wrapper .dataTables_scrollHead table,
+    #tablaDetallePagos_wrapper .dataTables_scrollHeadInner,
+    #tablaDetallePagos_wrapper .dataTables_scrollHeadInner table,
+    #tablaDetallePagos_wrapper .dataTables_scrollBody table,
+    #tablaDetallePagos_wrapper .dataTables_scrollFoot table {
+        table-layout: fixed !important;
+        width: 6500px !important;
+        border-collapse: separate !important;
+        border-spacing: 0;
+    }
     #tablaDetallePagos thead th, #tablaDetallePagos tfoot th,
     #tablaDetallePagos_wrapper .dataTables_scrollHead thead th,
     #tablaDetallePagos_wrapper thead th {
@@ -3039,14 +3054,14 @@ if (is_readable($nominaGkJs)) {
         function sincronizarAnchosEncabezadoCuerpo(dt) {
             const $wrapper = $('#tablaFacturas_wrapper');
             const $fila = $wrapper.find('.dataTables_scrollBody #tablaFacturas tbody tr:visible').first();
-            if (!$fila.length) return;
+            if (!$fila.length || $fila.find('.dataTables_empty').length || $fila.children('td').length <= 1) return;
 
             const anchos = [];
             $fila.children('td').each(function (i) {
                 anchos[i] = Math.round(this.getBoundingClientRect().width * 100) / 100;
             });
 
-            if (!anchos.length) return;
+            if (!anchos.length || anchos.length <= 1) return;
 
             $wrapper.find('.dataTables_scrollHead table, .dataTables_scrollBody table, .dataTables_scrollFoot table')
                 .each(function () {
